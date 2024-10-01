@@ -7,11 +7,12 @@ export default {
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        "./resources/**/*.blade.php",
         "./resources/**/*.js",
         "./resources/**/*.vue",
-        "./node_modules/flowbite/**/*.js"
+        "./node_modules/flowbite/**/*.js",
     ],
-    darkMode: 'class',
+
     theme: {
         extend: {
             fontFamily: {
@@ -21,11 +22,7 @@ export default {
     },
 
     plugins: [
-        require('flowbite/plugin')({
-            datatables: true,
-        }),forms
-        // ... other plugins
+        forms,
+        require('flowbite/plugin'),
     ],
-    
 };
-

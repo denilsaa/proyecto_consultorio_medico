@@ -1,4 +1,4 @@
-<x-app-layout-home>
+<x-componentes.app-layout-home>
     <div class="relative overflow-x-auto shadow-2xl shadow-black dark:shadow-neutral-300 sm:rounded-lg ">
         <div class="relative overflow-x-auto shadow-2xl shadow-black dark:shadow-white sm:rounded-lg">
             <div class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -178,7 +178,6 @@
                                     </tr>
                                 </thead>
 
-                                <livewire:tb-personal />
                             </table>
                         </div>
                     </div>
@@ -190,4 +189,4 @@
 
         </div>
     </div>
-</x-app-layout-home>
+</x-componentes.app-layout-home>
