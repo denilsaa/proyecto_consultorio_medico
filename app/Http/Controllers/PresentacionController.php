@@ -12,6 +12,7 @@ class PresentacionController extends Controller
      */
     public function index()
     {
+        return view('modulos.presentacion');
         $presentaciones = Presentacion::all();
         return json_encode($presentaciones);
     }

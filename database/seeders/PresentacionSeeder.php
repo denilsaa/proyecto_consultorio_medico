@@ -37,6 +37,46 @@ class PresentacionSeeder extends Seeder
             'nombre' => 'Capsula',
         ]);
 
-        Presentacion::factory(5)->create();
+        Presentacion::create([
+            'nombre' => 'Suspension',
+        ]);
+
+        Presentacion::create([
+            'nombre' => 'Supositorio',
+        ]);
+
+        Presentacion::create([
+            'nombre' => 'Polvo',
+        ]);
+
+        Presentacion::create([
+            'nombre' => 'Aerosol',
+        ]);
+
+        Presentacion::create([
+            'nombre' => 'Gel',
+        ]);
+
+        Presentacion::create([
+            'nombre' => 'Solucion',
+        ]);
+
+        Presentacion::create([
+            'nombre' => 'Emulsion',
+        ]);
+
+        Presentacion::create([
+            'nombre' => 'Pomada',
+        ]);
+
+        Presentacion::create([
+            'nombre' => 'Loción',
+        ]);
+
+        Presentacion::create([
+            'nombre' => 'Pastilla',
+        ]);
+
+        //Presentacion::factory(5)->create();
     }
 }
