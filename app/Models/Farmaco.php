@@ -26,6 +26,6 @@ class Farmaco extends Model
 
     public function presentaciones()
     {
-        return $this->belongsToMany(Presentacion::class, 'presentacion_farmaco');
+        return $this->belongsToMany(Presentacion::class, 'presentacion_farmaco', 'farmaco_id', 'presentacion_id');
     }
 }

@@ -48,6 +48,41 @@ class FarmacoSeeder extends Seeder
             'personal_id' => 1,
         ]);
 
-        Farmaco::factory(5)->create();
+        Farmaco::create([
+            'nombre' => 'Dexametasona',
+            'cantidad' => 5,
+            'fecha_vencimiento' => '2022-12-31',
+            'personal_id' => 1,
+        ]);
+
+        Farmaco::create([
+            'nombre' => 'Ranitidina',
+            'cantidad' => 10,
+            'fecha_vencimiento' => '2022-12-31',
+            'personal_id' => 1,
+        ]);
+
+        Farmaco::create([
+            'nombre' => 'Metformina',
+            'cantidad' => 15,
+            'fecha_vencimiento' => '2022-12-31',
+            'personal_id' => 1,
+        ]);
+
+        Farmaco::create([
+            'nombre' => 'Clonazepam',
+            'cantidad' => 10,
+            'fecha_vencimiento' => '2022-12-31',
+            'personal_id' => 1,
+        ]);
+
+        Farmaco::create([
+            'nombre' => 'Loratadina',
+            'cantidad' => 20,
+            'fecha_vencimiento' => '2022-12-31',
+            'personal_id' => 1,
+        ]);
+
+        //Farmaco::factory(5)->create();
     }
 }

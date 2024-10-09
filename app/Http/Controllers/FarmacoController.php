@@ -10,9 +10,38 @@ class FarmacoController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public $sort = 'id';
+
+    public $direction = 'desc';
+
+    public $search = '';
     public function index()
     {
-        $farmacos = Farmaco::with('presentaciones')->get();
+        return view('modulos.farmaco');
+        /*         $farmacos = Farmaco::with('presentaciones')->get()->flatMap(function ($farmaco) {
+            return $farmaco->presentaciones->map(function ($presentacion) use ($farmaco) {
+                return [
+                    'nombre' => $farmaco->nombre,
+                    'cantidad' => $farmaco->cantidad,
+                    'fecha_vencimiento' => $farmaco->fecha_vencimiento,
+                    'presentacion' => $presentacion->nombre
+                ];
+            });
+        }); */
+        $farmacos = Farmaco::with('presentaciones')
+            ->where('nombre', 'like', '%' . $this->search . '%')
+            ->orderBy($this->sort, $this->direction)
+            ->get()
+            ->flatMap(function ($farmaco) {
+                return $farmaco->presentaciones->map(function ($presentacion) use ($farmaco) {
+                    return [
+                        'nombre' => $farmaco->nombre,
+                        'cantidad' => $farmaco->cantidad,
+                        'fecha_vencimiento' => $farmaco->fecha_vencimiento,
+                        'presentacion' => $presentacion->nombre
+                    ];
+                });
+            });
         return json_encode($farmacos);
     }
 

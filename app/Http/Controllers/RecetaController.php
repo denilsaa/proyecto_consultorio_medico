@@ -12,7 +12,21 @@ class RecetaController extends Controller
      */
     public function index()
     {
+        return view('modulos.recetas');
         $recetas = Receta::with('farmaco', 'historial.paciente')->get();
+        $recetas = Receta::select(
+            'usuarios.nombre as paciente',
+            'usuarios.telefono',
+            'farmacos.nombre as medicamento',
+            'recetas.indicaciones',
+            'recetas.cantidad',
+            'recetas.created_at as fecha'
+        )
+            ->join('farmacos', 'farmacos.id', '=', 'recetas.farmaco_id')
+            ->join('historials', 'historials.id', '=', 'recetas.historial_id')
+            ->join('pacientes', 'pacientes.id', '=', 'historials.paciente_id')
+            ->join('usuarios', 'usuarios.id', '=', 'pacientes.usuario_id')
+            ->get();
         return json_encode($recetas);
     }
 
