@@ -57,6 +57,11 @@ Route::resource('recetas', RecetaController::class);
 Route::resource('roles', RolController::class);
 
 
+// RUTAS PARA INSERCIÓN DE DATOS
+
+Route::post('/personal/insert', [PersonalController::class, 'insert'])->name('personal.insert');
+
+
 Route::get('/favicon.ico', function () {
     return response()->file(public_path('favicon.ico'));
 });

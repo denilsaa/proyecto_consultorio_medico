@@ -9,7 +9,7 @@
                     <div>
                         <h6
                             class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase dark:text-primary-light">
-                            Pasientes
+                            Pacientes
                         </h6>
                         <span class="text-xl font-semibold">10</span>
                         <span class="inline-block px-2 py-px ml-2 text-xs text-green-500 bg-green-100 rounded-md">
@@ -62,7 +62,7 @@
                     <div>
                         <h6
                             class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase dark:text-primary-light">
-                            Farmacos
+                            Fármacos
                         </h6>
                         <span class="text-xl font-semibold">45</span>
                         <span class="inline-block px-2 py-px ml-2 text-xs text-green-500 bg-green-100 rounded-md">
@@ -120,13 +120,13 @@
 
             <!-- buttons -->
             <div class="grid grid-cols-1 gap-2 py-2 px-4 lg:grid-cols-2 xl:grid-cols-3">
-                <button class="w-full bg-blue-800 text-gray-50 font-semibold py-2 mt-1 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
+                <button class="w-full bg-blue-800 text-gray-50 font-semibold py-2 mt-1 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-blue-500 transition-all duration-300  flex items-center justify-center">
                     <i class="fas fa-plus mr-3"></i> Nueva Cita
                 </button>
-                <button class="w-full bg-blue-800 text-gray-50  font-semibold py-2 mt-1 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                    <i class="fas fa-plus mr-3"></i> Nuevo Pasiente
+                <button class="w-full bg-blue-800 text-gray-50  font-semibold py-2 mt-1 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-blue-500 transition-all duration-300 flex items-center justify-center">
+                    <i class="fas fa-plus mr-3"></i> Nuevo Paciente
                 </button>
-                <button class="w-full bg-blue-800 text-gray-50  font-semibold py-2 mt-1 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
+                <button class="w-full bg-blue-800 text-gray-50  font-semibold py-2 mt-1 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-blue-500 transition-all duration-300 flex items-center justify-center">
                     <i class="fas fa-plus mr-3"></i> Nuevo Doctor
                 </button>
             </div>
