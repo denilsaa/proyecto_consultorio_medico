@@ -25,10 +25,10 @@ class PersonalController extends Controller
     {
         // Crear una nueva instancia del modelo Usuario
 
-        
+
 
         $usuario = new Usuario();
-        $usuario->nombre = $request->input('name'); // Campo 'name' del formulario
+        $usuario->nombre = $request->input('nombre'); // Campo 'name' del formulario
         $usuario->ap_paterno = $request->input('ap_pa'); // Campo 'ap_pa' del formulario
         $usuario->ap_materno = $request->input('ap_ma'); // Campo 'ap_ma' del formulario
         $usuario->correo = $request->input('email'); // Campo 'email' del formulario
@@ -73,7 +73,7 @@ class PersonalController extends Controller
      */
     public function edit(Personal $personal)
     {
-        //
+        return json_encode($personal->load('usuario'));
     }
 
     /**
@@ -81,7 +81,21 @@ class PersonalController extends Controller
      */
     public function update(Request $request, Personal $personal)
     {
-        //
+        $usuario = $personal->usuario;
+        $usuario->nombre = $request->input('nombre');
+        $usuario->ap_paterno = $request->input('ap_pa');
+        $usuario->ap_materno = $request->input('ap_ma');
+        $usuario->correo = $request->input('email');
+        $usuario->telefono = $request->input('telefono');
+        $usuario->carnet = $request->input('carnet');
+        $usuario->save();
+
+        $personal->fecha_contrato = date('Y-m-d', strtotime($request->input('fecha_contratacion')));
+        $personal->turno = $request->input('turno');
+        $personal->cargo = $request->input('rol');
+        $personal->save();
+
+        return redirect()->back()->with('success', 'Personal actualizado correctamente.');
     }
 
     /**
