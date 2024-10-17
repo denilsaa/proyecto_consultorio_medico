@@ -17,6 +17,10 @@ Este es un sistema de gestión de citas para un consultorio médico, desarrollad
 - **Notificaciones**: Recordatorios automáticos para pacientes y personal sobre citas próximas.
 - **Seguridad**: Autenticación y roles de usuario (administrador, médico, asistente).
 
+## 🛢️ Diagrama base de datos
+
+![Dashboard](capturas/diagrama_base.png)
+
 ## 📦 Instalación
 
 Sigue estos pasos para poner en marcha el proyecto en tu entorno local:
@@ -55,10 +59,11 @@ Compila los assets del frontend:
 npm run dev
 ```
 
-### 6. Iniciar el servidor local
+### 6. Iniciar el servidor local o en un entorno de desarrollo
 Ejecuta el servidor de desarrollo de Laravel:
 ```bash
 php artisan serve
+npm run dev
 ```
 
 Ahora puedes acceder al sistema en `http://localhost:8000`.
@@ -89,9 +94,5 @@ Ahora puedes acceder al sistema en `http://localhost:8000`.
 
 Este proyecto está bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
 
-## 👨‍💻 Autor
-
-Desarrollado por [Denilson](https://github.com/denilsaa) , [Alejandro](https://github.com/alejav0240) , [Henry](https://github.com/denilsaa). Si tienes alguna pregunta o sugerencia, ¡no dudes en ponerte en contacto!
-```
 
 Puedes copiar y pegar este código directamente en tu archivo `README.md`. No olvides ajustar los detalles como tu nombre de usuario de GitHub, capturas de pantalla y cualquier información adicional que necesites.
