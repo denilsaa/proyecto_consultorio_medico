@@ -17,6 +17,10 @@ Este es un sistema de gestión de citas para un consultorio médico, desarrollad
 - **Notificaciones**: Recordatorios automáticos para pacientes y personal sobre citas próximas.
 - **Seguridad**: Autenticación y roles de usuario (administrador, médico, asistente).
 
+## 🛢️ Diagrama base de datos
+
+![Dashboard](capturas/diagrama_base.png)
+
 ## 📦 Instalación
 
 Sigue estos pasos para poner en marcha el proyecto en tu entorno local:
