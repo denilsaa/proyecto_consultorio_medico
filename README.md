@@ -94,9 +94,5 @@ Ahora puedes acceder al sistema en `http://localhost:8000`.
 
 Este proyecto está bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
 
-## 👨‍💻 Autor
-
-Desarrollado por [Denilson](https://github.com/denilsaa) , [Alejandro](https://github.com/alejav0240) , [Henry](https://github.com/HenrryDG). Si tienes alguna pregunta o sugerencia, ¡no dudes en ponerte en contacto!
-```
 
 Puedes copiar y pegar este código directamente en tu archivo `README.md`. No olvides ajustar los detalles como tu nombre de usuario de GitHub, capturas de pantalla y cualquier información adicional que necesites.
