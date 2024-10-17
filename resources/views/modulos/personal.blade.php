@@ -186,7 +186,7 @@
 
                             <!-- modal -->
                             <div>
-                                <x-formularios.form-personal titulo="Editar Informacion" modal="{{$edit}}"/>
+                                <x-formularios.form-personal titulo="Editar Informacion" modal="{{$edit}}" :id="$personal->id" :personal="$personal" />
                             </div>
                             
                         </td>
