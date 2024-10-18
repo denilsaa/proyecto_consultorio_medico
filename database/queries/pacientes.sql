@@ -10,3 +10,5 @@ inner join farmacos  fr on fr.id = rc.farmaco_id
 inner join historials hs on hs.id = rc.historial_id
 inner join pacientes pa on pa.id = hs.paciente_id
 inner join usuarios usp on usp.id = pa.usuario_id;
+
+SELECT * FROM usuarios INNER JOIN pacientes p ON usuarios.id = p.usuario_id;
