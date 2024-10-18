@@ -54,9 +54,9 @@ $titulo = $titulo ?? 'Sin Titulo';
 
 <body class="" id="dark-mode">
 
-    <x-componentes.nav-home></x-componentes.nav-home>
+    <x-componentes.nav-home/>
 
-    <x-componentes.aside-home></x-componentes.aside-home>
+    <x-componentes.aside-home/>
 
     <div class="p-4 pt-20 sm:ml-64 dark:bg-[#466EAB]">
         {{ $slot }}

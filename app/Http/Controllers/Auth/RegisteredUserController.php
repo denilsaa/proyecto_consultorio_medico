@@ -57,8 +57,6 @@ class RegisteredUserController extends Controller
             'telefono_emergencia' => $request->telefono_emergencia,
         ]);
 
-
-
         event(new Registered($usuario));
 
         Auth::login($usuario);
