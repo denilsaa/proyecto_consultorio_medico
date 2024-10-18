@@ -37,6 +37,13 @@
             <x-input-error :messages="$errors->get('telefono')" class="mt-2" />
         </div>
 
+        <!-- Teléfono de Emergencia -->
+        <div class="mt-4">
+            <x-input-label for="telefono_emergencia" :value="__('Teléfono de Emergencia')" />
+            <x-text-input id="telefono_emergencia" class="block mt-1 w-full" type="text" name="telefono_emergencia" :value="old('telefono_emergencia')" required autocomplete="telefono_emergencia" />
+            <x-input-error :messages="$errors->get('telefono_emergencia')" class="mt-2" />
+        </div>
+
         <!-- Carnet -->
         <div class="mt-4">
             <x-input-label for="carnet" :value="__('Carnet')" />
