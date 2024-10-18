@@ -15,13 +15,11 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Framework\Constraint\Count;
 
-/* Route::get('/', function () {
+Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [HomeController::class])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -30,11 +28,11 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
- */
+
 
 //Route::get('/', [PersonalController::class, 'index']);
 
-Route::get('/', HomeController::class)->name('home');
+Route::get('/home', HomeController::class)->name('home');
 
 Route::resource('personal', PersonalController::class);
 
@@ -55,16 +53,6 @@ Route::resource('triajes', TriajeController::class);
 Route::resource('recetas', RecetaController::class);
 
 Route::resource('roles', RolController::class);
-
-
-// RUTAS PARA INSERCIÓN DE DATOS
-
-Route::post('/personal/insert', [PersonalController::class, 'insert'])->name('personal.insert');
-
-
-Route::get('/favicon.ico', function () {
-    return response()->file(public_path('favicon.ico'));
-});
 
 use App\Livewire\Counter;
 
