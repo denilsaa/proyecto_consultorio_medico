@@ -1,6 +1,11 @@
 # 📋 Sistema de Gestión de Citas Médicas
 
 Este es un sistema de gestión de citas para un consultorio médico, desarrollado con **Laravel Livewire**. Proporciona una solución completa para la administración de citas, gestión de pacientes y la organización del calendario de médicos. El sistema permite a los usuarios programar, modificar y cancelar citas de manera eficiente, garantizando una experiencia fluida tanto para el personal médico como para los pacientes.
+## 👥 Equipo
+
+ => Alejandro Chipana (Programador FrontEnd y Analista de QA) [https://github.com/alejav0240]
+ => Henrry Gutiérrez (Programador BackEnd) [https://github.com/HenrryDG]
+ => Denilson Saavedra (Coach) [https://github.com/denilsaa]
 
 ## 🛠️ Tecnologías Utilizadas
 
