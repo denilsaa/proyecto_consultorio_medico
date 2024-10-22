@@ -4,6 +4,7 @@ namespace App\Livewire\Tablas;
 
 use Livewire\Component;
 use App\Models\Paciente;
+use Illuminate\Support\Str;
 
 class TbPacientes extends Component
 {
@@ -24,16 +25,15 @@ class TbPacientes extends Component
     {
         $this->updatePacientes();
     }
-
     public function updatePacientes()
     {
-        $this->pacientes = Paciente::with('usuario')
-            ->whereHas('usuario', function ($query) {
-                $query->where('nombre', 'like', '%' . $this->search . '%')
-                    ->orWhere('ap_paterno', 'like', '%' . $this->search . '%')
-                    ->orWhere('ap_materno', 'like', '%' . $this->search . '%');
-            })
-            ->orderBy($this->sort, $this->direction)
+        $this->search = Str::lower($this->search);
+        $this->pacientes = Paciente::select('usuarios.id as usuario_id', 'pacientes.id as paciente_id', 'usuarios.nombre', 'usuarios.ap_paterno', 'usuarios.ap_materno', 'usuarios.correo', 'usuarios.carnet', 'usuarios.estado_usuario', 'usuarios.telefono', 'pacientes.telefono_emergencia')
+            ->join('usuarios', 'pacientes.usuario_id', '=', 'usuarios.id')
+            ->where('usuarios.nombre', 'like', '%' . $this->search . '%')
+            ->orWhere('usuarios.ap_paterno', 'like', '%' . $this->search . '%')
+            ->orWhere('usuarios.ap_materno', 'like', '%' . $this->search . '%')
+            ->orderBy('pacientes.id', 'DESC')
             ->get();
     }
 
@@ -46,6 +46,8 @@ class TbPacientes extends Component
 
     public function order($sort, $tab = true)
     {
+
+        $this->search = Str::lower($this->search);
         if ($this->sort == $sort) {
             $this->direction = $this->direction == 'desc' ? 'asc' : 'desc';
         } else {
@@ -53,15 +55,12 @@ class TbPacientes extends Component
             $this->direction = 'asc';
         }
         if ($tab) {
-            $this->pacientes = Paciente::with('usuario')
-                ->whereHas('usuario', function ($query) {
-                    $query->where('nombre', 'like', '%' . $this->search . '%')
-                        ->orWhere('ap_paterno', 'like', '%' . $this->search . '%')
-                        ->orWhere('ap_materno', 'like', '%' . $this->search . '%');
-                })
+            $this->pacientes = Paciente::select('usuarios.id as usuario_id', 'pacientes.id as paciente_id', 'usuarios.nombre', 'usuarios.ap_paterno', 'usuarios.ap_materno', 'usuarios.correo', 'usuarios.carnet', 'usuarios.estado_usuario', 'usuarios.telefono', 'pacientes.telefono_emergencia')
                 ->join('usuarios', 'pacientes.usuario_id', '=', 'usuarios.id')
+                ->where('usuarios.nombre', 'like', '%' . $this->search . '%')
+                ->orWhere('usuarios.ap_paterno', 'like', '%' . $this->search . '%')
+                ->orWhere('usuarios.ap_materno', 'like', '%' . $this->search . '%')
                 ->orderBy('usuarios.' . $this->sort, $this->direction)
-                ->select('pacientes.*')
                 ->get();
         } else {
             $this->updatePacientes();

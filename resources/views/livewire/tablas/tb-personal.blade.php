@@ -1,9 +1,10 @@
 @php
     $cabeceras = [
         'Nombre',
-        'Carnet',
+        'Fecha de Contratación',
+        'Turno',
+        'Cargo',
         'Telefono',
-        'Telefono de Emergencia',
         'Estado',
         ''
     ];
@@ -12,9 +13,9 @@
 
 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
     <!-- bucador y otras acciones  -->
-    <x-componentes.tb-encabezado titulo="Pacientes" class="w-10" viewBox="0 0 24 24">
+    <x-componentes.tb-encabezado titulo="Pesonal">
         <x-slot name="icono">
-            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0"/>        
+            <path fill-rule="evenodd" d="M7 2a2 2 0 0 0-2 2v1a1 1 0 0 0 0 2v1a1 1 0 0 0 0 2v1a1 1 0 1 0 0 2v1a1 1 0 1 0 0 2v1a1 1 0 1 0 0 2v1a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H7Zm3 8a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm-1 7a3 3 0 0 1 3-3h2a3 3 0 0 1 3 3 1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1Z" clip-rule="evenodd" />
         </x-slot>
         <x-slot name="modal">                
             <x-formularios.form-pacientes></x-formularios.form-pacientes>

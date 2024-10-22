@@ -8,25 +8,17 @@ use Illuminate\Http\Request;
 
 class PersonalController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $personales = Personal::all()->load('usuario');
-        //return json_encode($personales);
         return view('modulos.personal', compact('personales'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Store a newly created resource in storage.
      */
-    public function insert(Request $request)
+    public function store(Request $request)
     {
-        // Crear una nueva instancia del modelo Usuario
-
-
-
         $usuario = new Usuario();
         $usuario->nombre = $request->input('nombre'); // Campo 'name' del formulario
         $usuario->ap_paterno = $request->input('ap_pa'); // Campo 'ap_pa' del formulario
@@ -49,15 +41,6 @@ class PersonalController extends Controller
 
         // Redireccionar o devolver una respuesta
         return redirect()->back()->with('success', 'Personal agregado correctamente.');
-    }
-
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**

@@ -12,7 +12,10 @@ class PacienteController extends Controller
      */
     public function index()
     {
-        $pacientes = Paciente::all()->load('usuario');
+        $pacientes = Paciente::select('usuarios.id as usuario_id', 'pacientes.id as paciente_id', 'usuarios.nombre', 'usuarios.ap_paterno', 'usuarios.ap_materno', 'usuarios.correo', 'usuarios.carnet', 'usuarios.estado_usuario', 'usuarios.telefono', 'pacientes.telefono_emergencia')
+            ->join('usuarios', 'pacientes.usuario_id', '=', 'usuarios.id')
+            ->orderBy('pacientes.id', 'DESC')
+            ->get();
         //return json_encode($pacientes);
         return view('modulos.pacientes', compact('pacientes'));
     }
