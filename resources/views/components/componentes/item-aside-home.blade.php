@@ -2,7 +2,7 @@
 
 @if (!isset($item['subitems']))
 <li>
-    <a href="{{$item['uri']}}" class="flex items-center p-2 rounded-lg text-white hover:bg-gray-700 group hover:shadow-xl">
+    <a href="{{$item['uri']}}" class="flex items-center p-2 rounded-lg text-white hover:bg-gray-700 transition-all duration-300 group hover:shadow-xl">
         {{$slot}}
         <span class="ms-3">{{$item['titulo']}}</span>
     </a>
