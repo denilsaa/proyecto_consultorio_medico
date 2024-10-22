@@ -2,7 +2,7 @@
 
 <x-componentes.form-base :titulo="$titulo" :modal="$modal">
     <!-- Modal body -->
-    <form method="POST" action="{{ $personal ? route('personal.update', $personal->id) : route('personal.insert') }}" class="p-4 md:p-5">
+    <form method="POST" action="{{ $personal ? route('personal.update', $personal->id) : route('personal.store') }}" class="p-4 md:p-5">
         @csrf
         @if ($id !== null)
             @method('PUT')            

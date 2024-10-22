@@ -1,14 +1,20 @@
---Selecciona todos los usuarios y pacientes ordenados por el id del paciente de forma descendente
-SELECT  * FROM usuarios
-INNER JOIN pacientes p ON usuarios.id = p.usuario_id
+
+SELECT u.id usuario_id,p.id paciente_id, u.nombre, u.ap_paterno, u.ap_materno, u.correo,u.carnet,u.estado_usuario, u.telefono, p.telefono_emergencia 
+FROM pacientes p 
+INNER JOIN usuarios u ON p.usuario_id = u.id
 ORDER BY p.id DESC;
+ SELECT * from usuarios;
+
+
+
 
 -- selecciona todas las recetas de un paciente en especifico
-select usp.nombre paciente,usp.telefono,fr.nombre medicamento,rc.indicaciones, rc.cantidad, rc.created_at fecha
-from recetas rc
-inner join farmacos  fr on fr.id = rc.farmaco_id
-inner join historials hs on hs.id = rc.historial_id
-inner join pacientes pa on pa.id = hs.paciente_id
-inner join usuarios usp on usp.id = pa.usuario_id;
+SELECT usp.nombre paciente, usp.telefono, fr.nombre medicamento, rc.indicaciones, rc.cantidad, rc.created_at fecha
+FROM recetas rc
+INNER JOIN farmacos fr ON fr.id = rc.farmaco_id
+INNER JOIN historials hs ON hs.id = rc.historial_id
+INNER JOIN pacientes pa ON pa.id = hs.paciente_id
+INNER JOIN usuarios usp ON usp.id = pa.usuario_id;
 
-SELECT * FROM usuarios INNER JOIN pacientes p ON usuarios.id = p.usuario_id;
+SELECT * FROM usuarios 
+INNER JOIN pacientes p ON usuarios.id = p.usuario_id;
