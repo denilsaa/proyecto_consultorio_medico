@@ -1,7 +1,9 @@
 @props(['titulo', 'viewBox' => '0 0 0 0'])
 <caption class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+    <!-- Titulo -->
     <h1 class="text-3xl text-black dark:text-white mb-2 flex items-center w-full p-2 text-basetransition duration-75 rounded-lg group">
-        <svg class="w-8 h-8 text-gray-800 dark:text-white mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg fill="currentColor" viewBox="{{$viewBox}}">
+        <!-- Icono -->
+        <svg class="w-8 h-8 text-gray-800 dark:text-white mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" viewBox="{{$viewBox}}">
             {{$icono}}
         </svg>
         <!-- Titulo -->
