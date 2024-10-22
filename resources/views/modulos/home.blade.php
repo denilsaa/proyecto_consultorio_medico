@@ -11,7 +11,7 @@
                             class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase dark:text-primary-light">
                             Pacientes
                         </h6>
-                        <span class="text-xl font-semibold">10</span>
+                        <span class="text-xl font-semibold">{{$cantidadPacientes}}</span>
                         <span class="inline-block px-2 py-px ml-2 text-xs text-green-500 bg-green-100 rounded-md">
                             +2.5%
                         </span>
@@ -41,7 +41,7 @@
                             class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase dark:text-primary-light">
                             Citas
                         </h6>
-                        <span class="text-xl font-semibold">12</span>
+                        <span class="text-xl font-semibold">{{$cantidadCitas}}</span>
                         <span class="inline-block px-2 py-px ml-2 text-xs text-green-500 bg-green-100 rounded-md">
                             +4.4%
                         </span>
@@ -64,7 +64,7 @@
                             class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase dark:text-primary-light">
                             Fármacos
                         </h6>
-                        <span class="text-xl font-semibold">45</span>
+                        <span class="text-xl font-semibold">{{$cantidadFarmacos}}</span>
                         <span class="inline-block px-2 py-px ml-2 text-xs text-green-500 bg-green-100 rounded-md">
                             +3.1%
                         </span>
@@ -121,22 +121,22 @@
             <!-- buttons -->
             <div class="grid grid-cols-1 gap-2 py-2 px-4 lg:grid-cols-2 xl:grid-cols-3">
                 <button class="w-full bg-blue-800 text-gray-50 font-semibold py-2 mt-1 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-blue-500 transition-all duration-300  flex items-center justify-center">
-                    <i class="fas fa-plus mr-3"></i> Nueva Cita
+                    <i class="fas fa-plus mr-3"></i> Citas
                 </button>
                 <button class="w-full bg-blue-800 text-gray-50  font-semibold py-2 mt-1 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-blue-500 transition-all duration-300 flex items-center justify-center">
-                    <i class="fas fa-plus mr-3"></i> Nuevo Paciente
+                    <i class="fas fa-plus mr-3"></i> Pacientes
                 </button>
                 <button class="w-full bg-blue-800 text-gray-50  font-semibold py-2 mt-1 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-blue-500 transition-all duration-300 flex items-center justify-center">
-                    <i class="fas fa-plus mr-3"></i> Nuevo Doctor
+                    <i class="fas fa-plus mr-3"></i> Personal
                 </button>
             </div>
 
         </main>
         <div>
 
-        </div><!-- 
-        <footer class="w-full text-right p-4 bg-gray-200 dark:bg-slate-800 rounded-xl my-2">
+        </div> 
+        {{-- <footer class="w-full text-right p-4 bg-gray-200 dark:bg-slate-800 rounded-xl my-2">
             Innova Tech Bolivia
-        </footer> -->
+        </footer> --}}
     </div>
 </x-componentes.app-layout-home>
