@@ -9,11 +9,8 @@ use Illuminate\Support\Str;
 class TbPacientes extends Component
 {
     public $pacientes;
-
     public $search = '';
-
     public $sort = 'id';
-
     public $direction = 'desc';
 
     public function mount()
@@ -25,17 +22,6 @@ class TbPacientes extends Component
     {
         $this->updatePacientes();
     }
-    public function updatePacientes()
-    {
-        $this->search = Str::lower($this->search);
-        $this->pacientes = Paciente::select('usuarios.id as usuario_id', 'pacientes.id as paciente_id', 'usuarios.nombre', 'usuarios.ap_paterno', 'usuarios.ap_materno', 'usuarios.correo', 'usuarios.carnet', 'usuarios.estado_usuario', 'usuarios.telefono', 'pacientes.telefono_emergencia')
-            ->join('usuarios', 'pacientes.usuario_id', '=', 'usuarios.id')
-            ->where('usuarios.nombre', 'like', '%' . $this->search . '%')
-            ->orWhere('usuarios.ap_paterno', 'like', '%' . $this->search . '%')
-            ->orWhere('usuarios.ap_materno', 'like', '%' . $this->search . '%')
-            ->orderBy('pacientes.id', 'DESC')
-            ->get();
-    }
 
     public function render()
     {
@@ -44,26 +30,59 @@ class TbPacientes extends Component
         ]);
     }
 
-    public function order($sort, $tab = true)
+    protected function lista()
     {
+        return $this->queryPacientes()->get([
+            'pacientes.id as paciente_id',
+            'pacientes.usuario_id',
+            'pacientes.telefono_emergencia'
+        ]);
+    }
 
-        $this->search = Str::lower($this->search);
+    public function order($sort)
+    {
+        $validColumns = ['id', 'usuario_id', 'telefono_emergencia'];
+        $userColumns = ['nombre', 'ap_paterno', 'ap_materno', 'carnet'];
+
         if ($this->sort == $sort) {
             $this->direction = $this->direction == 'desc' ? 'asc' : 'desc';
         } else {
             $this->sort = $sort;
             $this->direction = 'asc';
         }
-        if ($tab) {
-            $this->pacientes = Paciente::select('usuarios.id as usuario_id', 'pacientes.id as paciente_id', 'usuarios.nombre', 'usuarios.ap_paterno', 'usuarios.ap_materno', 'usuarios.correo', 'usuarios.carnet', 'usuarios.estado_usuario', 'usuarios.telefono', 'pacientes.telefono_emergencia')
-                ->join('usuarios', 'pacientes.usuario_id', '=', 'usuarios.id')
-                ->where('usuarios.nombre', 'like', '%' . $this->search . '%')
-                ->orWhere('usuarios.ap_paterno', 'like', '%' . $this->search . '%')
-                ->orWhere('usuarios.ap_materno', 'like', '%' . $this->search . '%')
-                ->orderBy('usuarios.' . $this->sort, $this->direction)
-                ->get();
+
+        if (in_array($sort, $validColumns) || in_array($sort, $userColumns)) {
+            $this->updatePacientes();
         } else {
+            // Manejar el caso de una columna no válida
+            $this->sort = 'id';
+            $this->direction = 'desc';
             $this->updatePacientes();
         }
+    }
+
+    private function updatePacientes()
+    {
+        $this->pacientes = $this->lista();
+    }
+
+    private function queryPacientes()
+    {
+        $search = Str::lower($this->search);
+        $query = Paciente::with('usuario')
+            ->whereHas('usuario', function ($query) use ($search) {
+                $query->where('nombre', 'like', '%' . $search . '%')
+                    ->orWhere('ap_paterno', 'like', '%' . $search . '%')
+                    ->orWhere('ap_materno', 'like', '%' . $search . '%');
+            });
+
+        if (in_array($this->sort, ['nombre', 'ap_paterno', 'ap_materno', 'carnet'])) {
+            $query->join('usuarios', 'pacientes.usuario_id', '=', 'usuarios.id')
+                ->orderBy('usuarios.' . $this->sort, $this->direction);
+        } else {
+            $query->orderBy('pacientes.' . $this->sort, $this->direction);
+        }
+
+        return $query;
     }
 }

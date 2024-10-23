@@ -14,6 +14,13 @@ class Paciente extends Model
         'telefono_emergencia',
     ];
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'usuario_id'
+    ];
+
+
     public function citas()
     {
         return $this->hasMany(Cita::class);

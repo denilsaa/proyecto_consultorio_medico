@@ -31,6 +31,9 @@ class Usuario extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'created_at',
+        'updated_at',
+        'correo_verified_at',
     ];
 
     // Campos que se deben convertir a tipos de datos nativos
