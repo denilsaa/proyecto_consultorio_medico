@@ -38,7 +38,7 @@ class RegisteredUserController extends Controller
             'correo' => 'required|string|email|max:255|unique:usuarios',
             'telefono' => 'required|string|max:8',
             'telefono_emergencia' => 'required|string|max:8',
-            'carnet' => 'required|string|max:255',
+            'carnet' => 'required|string|max:255|unique:usuarios',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 

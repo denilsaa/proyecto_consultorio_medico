@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Paciente;
 use App\Models\Cita;
 use App\Models\Farmaco;
+use App\Models\Triaje;
+use App\Models\Usuario;
 
 class HomeController extends Controller
 {
@@ -22,5 +24,10 @@ class HomeController extends Controller
             'cantidadCitas' => $cantidadCitas,
             'cantidadFarmacos' => $cantidadFarmacos
         ]);
+    }
+    public function prueba()
+    {
+        $Usuarios = Triaje::all();
+        return json_encode($Usuarios);
     }
 }
