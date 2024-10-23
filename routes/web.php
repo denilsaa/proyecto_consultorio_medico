@@ -30,6 +30,8 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 
 
+Route::get('/prueba', [HomeController::class, 'prueba']);
+
 //Route::get('/', [PersonalController::class, 'index']);
 
 Route::get('/home', HomeController::class)->name('home');
