@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Inicio</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -52,37 +52,28 @@
                         <div class="relative h-48 overflow-hidden md:h-96">
                             <!-- Item 1 -->
                             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                <img src="https://th.bing.com/th/id/R.0dc9a33cd29f2858ced16bc92e05d3c2?rik=9X2gOMz4PX%2bqpQ&pid=ImgRaw&r=0" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                                <img src="https://medially.co/wp-content/uploads/2023/07/medidas-consultorios-medicos.jpg" class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Consultorio médico">
                             </div>
                             <!-- Item 2 -->
                             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                <img src="https://th.bing.com/th/id/R.03b72ded05ac5201ab78ae513171f29e?rik=x0idgUVS2U8jFA&pid=ImgRaw&r=0" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                                <img src="https://png.pngtree.com/background/20230606/original/pngtree-clean-medical-office-is-shown-picture-image_2880028.jpg" class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Imagen 2">
                             </div>
                             <!-- Item 3 -->
                             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                <img src="https://th.bing.com/th/id/R.21644b397c3436b0094a49d9442426d5?rik=6Rqrz6j6W%2fcshw&pid=ImgRaw&r=0" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                            </div>
-                            <!-- Item 4 -->
-                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                <img src="https://th.bing.com/th/id/OIP.-zrIIi1qs3_uYc-Z2bT6GgHaE8?rs=1&pid=ImgDetMain" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                            </div>
-                            <!-- Item 5 -->
-                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                <img src="https://th.bing.com/th/id/R.b841060c6bafa7933767a60a7c59117f?rik=nYjhdatURCiHzg&riu=http%3a%2f%2fwww.socienee.com%2fwp-content%2fuploads%2fnt_mejores_clinicas_bn.jpg&ehk=Xl%2fPMWaKrXiV7UXeSEiBFY8xV4xoxY%2bcknes2leM7Zw%3d&risl=&pid=ImgRaw&r=0" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                                <img src="https://images.adsttc.com/media/images/5478/10cd/e58e/ce98/5800/00db/large_jpg/Sendagrup_010.jpg?1417154748" class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Imagen 3">
                             </div>
                         </div>
+                        
                         <!-- Slider indicators -->
                         <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
                             <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
                             <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
                             <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-                            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
-                            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
                         </div>
                         <!-- Slider controls -->
                         <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                                <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/50 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                                <svg class="w-4 h-4 text-black dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
                                 </svg>
                                 <span class="sr-only">Previous</span>
@@ -90,7 +81,7 @@
                         </button>
                         <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
                             <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                                <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                <svg class="w-4 h-4 text-black dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
                                 </svg>
                                 <span class="sr-only">Next</span>
@@ -99,27 +90,12 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-3 gap-4 mb-4">
-                    <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-                        <p class="text-2xl text-gray-400 dark:text-gray-500">
-                        <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                        </svg>
-                        </p>
-                    </div>
-                    <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-                        <p class="text-2xl text-gray-400 dark:text-gray-500">
-                        <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                        </svg>
-                        </p>
-                    </div>
-                    <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-                        <p class="text-2xl text-gray-400 dark:text-gray-500">
-                        <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                        </svg>
-                        </p>
+                <div class="grid grid-cols-1 gap-4 mb-4">
+                    < <div class=" p-2 items-center justify-center rounded bg-gray-50 h-40 dark:bg-gray-800">
+                        
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Nuestra Historia</h5>
+                        <p class="font-normal text-gray-700 dark:text-gray-400">"Fundado en 2017, nuestro consultorio nació como un proyecto comunitario con el firme propósito de proporcionar atención médica accesible y de calidad a nuestra comunidad. Desde el principio, nos hemos comprometido a ofrecer un enfoque integral que priorice el bienestar físico, mental y emocional de cada uno de nuestros pacientes. A lo largo de los años, hemos crecido y evolucionado, pero mantenemos intactos nuestros valores fundamentales: la atención personalizada, la empatía y el compromiso con la salud de quienes confían en nosotros. Nos esforzamos constantemente por mejorar nuestros servicios a través de la innovación y la capacitación continua de nuestro equipo médico, siempre con la mirada puesta en brindar soluciones efectivas y humanas a las necesidades de salud de la comunidad."</p>
+                        
                     </div>
                 </div>
 
@@ -137,20 +113,6 @@
                         <p class="font-normal text-gray-700 dark:text-gray-400">"Brindar atención médica de alta calidad, centrada en el paciente, a través de un equipo profesional comprometido con la salud y el bienestar de nuestra comunidad. Fomentamos la prevención, la educación y el cuidado integral, garantizando un ambiente seguro y acogedor para todos nuestros pacientes."</p>
                         
                     </div>
-                    <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                        <p class="text-2xl text-gray-400 dark:text-gray-500">
-                        <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                        </svg>
-                        </p>
-                    </div>
-                    <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                        <p class="text-2xl text-gray-400 dark:text-gray-500">
-                        <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                        </svg>
-                        </p>
-                    </div>
                 </div>
 
                 <div class="flex items-center justify-center h-96 mb-4 bg-gray-50 dark:bg-gray-800">
@@ -159,41 +121,27 @@
                 </div>
 
                 <div class="grid grid-cols-2 gap-4">
-                    <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                        <p class="text-2xl text-gray-400 dark:text-gray-500">
-                        <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                        </svg>
-                        </p>
-                    </div>
-                    <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                        <p class="text-2xl text-gray-400 dark:text-gray-500">
-                        <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                        </svg>
-                        </p>
-                    </div>
-                    <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                        <p class="text-2xl text-gray-400 dark:text-gray-500">
-                        <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                        </svg>
-                        </p>
-                    </div>
-                    <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                        <p class="text-2xl text-gray-400 dark:text-gray-500">
-                        <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                        </svg>
-                        </p>
-                    </div>
+                    <div class=" p-2 items-center justify-center rounded bg-gray-50 h-40 dark:bg-gray-800">
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Nuestros Servicios</h5>
+                        <ul class="font-normal text-gray-700 dark:text-gray-400">
+                           <li>✔ Consulta médica general</li>
+                           <li>✔ Tratamientos especializados</li>
+                           <li>✔ Control y monitoreo de enfermedades crónicas</li>
+                        </ul>
+                     </div>
+                     
+                     <div class="p-2 items-center justify-center rounded bg-gray-50 h-40 dark:bg-gray-800">
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Horarios de Atención</h5>
+                        <p class="font-normal text-gray-700 dark:text-gray-400">Lunes a Viernes: 8:00 AM - 6:00 PM <br>Sábado: 9:00 AM - 2:00 PM</p>
+                     </div>
+                     
                 </div>
             </div>
         </div>
 
         <footer class="bg-white rounded-lg shadow m-4 dark:bg-gray-800">
             <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-                <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" class="hover:underline">Flowbite™</a>. All Rights Reserved.
+                <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="https://flowbite.com/" class="hover:underline">InnovaTech™</a>. All Rights Reserved.
             </span>
             <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
                 <li>
