@@ -27,6 +27,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+
         $user = Auth::user();
 
         if (Personal::where('usuario_id', $user->id)->exists()) {
