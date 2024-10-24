@@ -27,13 +27,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        $user = Auth::user();
-
-        if (Personal::where('usuario_id', $user->id)->exists()) {
-            return redirect()->intended(route('home'));
-        } elseif (Paciente::where('usuario_id', $user->id)->exists()) {
-            return redirect()->intended(route('welcome'));
-        }
+        //return redirect()->intended(route('dashboard', absolute: false));
+        return redirect()->intended(route('home'));
     }
 
     public function destroy(Request $request): RedirectResponse
