@@ -1,12 +1,13 @@
-/* 
+
 SELECT u.id usuario_id,p.id paciente_id, u.nombre, u.ap_paterno, u.ap_materno, u.correo,u.carnet,u.estado_usuario, u.telefono, p.telefono_emergencia 
 FROM pacientes p 
 INNER JOIN usuarios u ON p.usuario_id = u.id
 ORDER BY p.id DESC;
- SELECT * from usuarios;
+ SELECT * from personals
+ INNER JOIN usuarios u ON personals.usuario_id = u.id;
 
-SELECT * FROM personals;
- */
+--SELECT * FROM personals;
+
 
 -- selecciona todas las recetas de un paciente en especifico
 /* SELECT usp.nombre paciente, usp.telefono, fr.nombre medicamento, rc.indicaciones, rc.cantidad, rc.created_at fecha
@@ -27,7 +28,7 @@ SELECT * FROM historials;
 SELECT * FROM presentacions; */
 /* SELECT * FROM recetas;
 SELECT * FROM farmacos; */
-
+/* 
 SELECT * FROM recibos;
 SELECT * FROM rols;
-SELECT * FROM triajes;
+SELECT * FROM triajes; */
