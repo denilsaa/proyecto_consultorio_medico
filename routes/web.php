@@ -17,7 +17,7 @@ use PHPUnit\Framework\Constraint\Count;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::get('/dashboard', [HomeController::class])->middleware(['auth', 'verified'])->name('dashboard');
 
