@@ -26,7 +26,7 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         //return redirect()->intended(route('dashboard', absolute: false));
-        return redirect()->intended(route('home'));
+        return redirect()->intended(route('welcome'));
     }
 
     public function destroy(Request $request): RedirectResponse
