@@ -32,9 +32,13 @@
                                 Dashboard
                             </a>
                     @else
-                            <a href="{{ route('login') }}" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Login</a>
+                            <a href="{{ route('login') }}" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">
+                                {{ __('Login') }}
+                            </a>
                             @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"> Register</a>
+                                <a href="{{ route('register') }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                                    {{ __('Register') }}
+                                </a>
                             @endif
                         @endauth
                         </nav>
@@ -90,24 +94,19 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 gap-4 mb-4">
-                    < <div class=" p-2 items-center justify-center rounded bg-gray-50 h-40 dark:bg-gray-800">
-                        
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Nuestra Historia</h5>
-                        <p class="font-normal text-gray-700 dark:text-gray-400">"Fundado en 2017, nuestro consultorio nació como un proyecto comunitario con el firme propósito de proporcionar atención médica accesible y de calidad a nuestra comunidad. Desde el principio, nos hemos comprometido a ofrecer un enfoque integral que priorice el bienestar físico, mental y emocional de cada uno de nuestros pacientes. A lo largo de los años, hemos crecido y evolucionado, pero mantenemos intactos nuestros valores fundamentales: la atención personalizada, la empatía y el compromiso con la salud de quienes confían en nosotros. Nos esforzamos constantemente por mejorar nuestros servicios a través de la innovación y la capacitación continua de nuestro equipo médico, siempre con la mirada puesta en brindar soluciones efectivas y humanas a las necesidades de salud de la comunidad."</p>
-                        
-                    </div>
+                <div class="items-center p-4 justify-center sm:h-46 h-[100] mb-4 bg-gray-50 dark:bg-gray-800">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Nuestra Historia</h5>
+                    <p class="font-normal text-gray-700 dark:text-gray-400">"Fundado en 2017, nuestro consultorio nació como un proyecto comunitario con el firme propósito de proporcionar atención médica accesible y de calidad a nuestra comunidad. Desde el principio, nos hemos comprometido a ofrecer un enfoque integral que priorice el bienestar físico, mental y emocional de cada uno de nuestros pacientes. A lo largo de los años, hemos crecido y evolucionado, pero mantenemos intactos nuestros valores fundamentales: la atención personalizada, la empatía y el compromiso con la salud de quienes confían en nosotros. Nos esforzamos constantemente por mejorar nuestros servicios a través de la innovación y la capacitación continua de nuestro equipo médico, siempre con la mirada puesta en brindar soluciones efectivas y humanas a las necesidades de salud de la comunidad."</p>
                 </div>
 
                 
-                <div class="grid grid-cols-2 gap-4 mb-4">
-                    <div class=" p-2 items-center justify-center rounded bg-gray-50 h-40 dark:bg-gray-800">
-                        
+                <div class="grid sm:grid-cols-2 grid-cols-1  gap-4 mb-4">
+                    <div class=" p-2 items-center justify-center rounded bg-gray-50 h-76 sm:h-40 dark:bg-gray-800">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Visión</h5>
                         <p class="font-normal text-gray-700 dark:text-gray-400">"Ser el consultorio médico de referencia en la comunidad, reconocido por nuestra excelencia en atención, innovación en tratamientos y un enfoque humano que prioriza la salud y el bienestar de cada individuo. Aspiramos a empoderar a nuestros pacientes a tomar decisiones informadas sobre su salud, creando un futuro más saludable para todos."</p>
                         
                     </div>                    
-                    <div class=" p-2 items-center justify-center rounded bg-gray-50 h-40 dark:bg-gray-800">
+                    <div class=" p-2 items-center justify-center rounded bg-gray-50 h-76 sm:h-40 dark:bg-gray-800">
                         
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Misión</h5>
                         <p class="font-normal text-gray-700 dark:text-gray-400">"Brindar atención médica de alta calidad, centrada en el paciente, a través de un equipo profesional comprometido con la salud y el bienestar de nuestra comunidad. Fomentamos la prevención, la educación y el cuidado integral, garantizando un ambiente seguro y acogedor para todos nuestros pacientes."</p>
@@ -120,21 +119,19 @@
                     allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="google-map w-full h-full"></iframe>
                 </div>
 
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid sm:grid-cols-2 grid-cols-1  gap-4 mb-4">
                     <div class=" p-2 items-center justify-center rounded bg-gray-50 h-40 dark:bg-gray-800">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Nuestros Servicios</h5>
                         <ul class="font-normal text-gray-700 dark:text-gray-400">
-                           <li>✔ Consulta médica general</li>
-                           <li>✔ Tratamientos especializados</li>
-                           <li>✔ Control y monitoreo de enfermedades crónicas</li>
+                            <li>✔ Consulta médica general</li>
+                            <li>✔ Tratamientos especializados</li>
+                            <li>✔ Control y monitoreo de enfermedades crónicas</li>
                         </ul>
-                     </div>
-                     
-                     <div class="p-2 items-center justify-center rounded bg-gray-50 h-40 dark:bg-gray-800">
+                    </div>
+                    <div class="p-2 items-center justify-center rounded bg-gray-50 sm:h-40 h-30 dark:bg-gray-800">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Horarios de Atención</h5>
                         <p class="font-normal text-gray-700 dark:text-gray-400">Lunes a Viernes: 8:00 AM - 6:00 PM <br>Sábado: 9:00 AM - 2:00 PM</p>
-                     </div>
-                     
+                    </div>
                 </div>
             </div>
         </div>

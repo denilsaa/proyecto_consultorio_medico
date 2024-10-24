@@ -34,7 +34,7 @@ Route::get('/prueba', [HomeController::class, 'prueba']);
 
 //Route::get('/', [PersonalController::class, 'index']);
 
-Route::get('/home', HomeController::class)->name('home');
+Route::get('/home', HomeController::class)->name('home')->middleware('auth', 'verified');
 
 Route::resource('personal', PersonalController::class);
 
