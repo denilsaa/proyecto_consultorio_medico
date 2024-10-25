@@ -6,7 +6,7 @@ ORDER BY p.id DESC;
  SELECT * from personals
  INNER JOIN usuarios u ON personals.usuario_id = u.id;
 
---SELECT * FROM personals;
+SELECT * FROM personals ;
 
 
 -- selecciona todas las recetas de un paciente en especifico
