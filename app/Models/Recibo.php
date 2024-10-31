@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Nette\Utils\Strings;
 
 class Recibo extends Model
 {
@@ -27,7 +28,7 @@ class Recibo extends Model
     {
         return Attribute::make(
             get: fn($value) => \Carbon\Carbon::parse($value)->format('d-m-Y'),
-            set: fn($value) => \Carbon\Carbon::createFromFormat('d-m-Y', $value)->toDateString(),
+            set: fn($value) => \Carbon\Carbon::createFromFormat('d-m-Y', (string) $value)->toDateString(),
         );
     }
 

@@ -12,7 +12,7 @@ class RecetaFactory extends Factory
     public function definition(): array
     {
         return [
-            'farmaco_id' => $this->faker->numberBetween(1, 10),
+            'presentacion_farmaco_id' => $this->faker->numberBetween(1, 10),
             'historial_id' => $this->faker->numberBetween(10, 50),
             'indicaciones' => $this->faker->sentence(),
             'cantidad' => $this->faker->numberBetween(1, 10),

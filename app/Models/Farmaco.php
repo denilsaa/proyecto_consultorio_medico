@@ -17,6 +17,12 @@ class Farmaco extends Model
         'personal_id',
     ];
 
+    protected $hidden = [
+        'id',
+        'created_at',
+        'updated_at',
+    ];
+
     public function personal()
     {
         return $this->belongsTo(Personal::class);
@@ -34,7 +40,7 @@ class Farmaco extends Model
 
     public function presentaciones()
     {
-        return $this->belongsToMany(Presentacion::class, 'presentacion_farmaco', 'farmaco_id', 'presentacion_id');
+        return $this->hasMany(PresentacionFarmaco::class);
     }
 
     protected function nombre(): Attribute

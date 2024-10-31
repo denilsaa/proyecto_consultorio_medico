@@ -25,8 +25,8 @@ class DatabaseSeeder extends Seeder
             FarmacoSeeder::class,
             HistorialSeeder::class,
             TriajeSeeder::class,
-            RecetaSeeder::class,
             PresentacionFarmacoSeeder::class,
+            RecetaSeeder::class,
         ]);
     }
 }

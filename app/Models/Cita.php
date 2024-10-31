@@ -43,7 +43,7 @@ class Cita extends Model
     {
         return Attribute::make(
             get: fn($value) => \Carbon\Carbon::parse($value)->format('d-m-Y'),
-            set: fn($value) => \Carbon\Carbon::createFromFormat('d-m-Y', $value)->toDateString(),
+            set: fn($value) => \Carbon\Carbon::createFromFormat('d-m-Y', (string) $value)->toDateString(),
         );
     }
 
@@ -51,7 +51,7 @@ class Cita extends Model
     {
         return Attribute::make(
             get: fn($value) => \Carbon\Carbon::parse($value)->format('H:i'),
-            set: fn($value) => \Carbon\Carbon::createFromFormat('H:i', $value)->toTimeString(),
+            set: fn($value) => \Carbon\Carbon::createFromFormat('H:i:s', $value)->format('H:i:s'),
         );
     }
 
