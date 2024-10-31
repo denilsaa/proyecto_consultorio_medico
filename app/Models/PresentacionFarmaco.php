@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class PresentacionFarmaco extends Model
 {
@@ -14,7 +15,25 @@ class PresentacionFarmaco extends Model
     protected $fillable = [
         'farmaco_id',
         'presentacion_id',
+        'fecha_vencimiento',
+        'cantidad',
     ];
+
+    protected function cantidad(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => (int) $value,
+            set: fn($value) => (int) $value,
+        );
+    }
+
+    protected function fechaVencimiento(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => \Carbon\Carbon::parse($value)->format('d-m-Y'),
+            set: fn($value) => \Carbon\Carbon::parse($value)->toDateString(),
+        );
+    }
 
     public function farmaco()
     {

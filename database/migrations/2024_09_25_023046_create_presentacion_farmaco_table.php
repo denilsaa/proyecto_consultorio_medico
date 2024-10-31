@@ -19,6 +19,8 @@ return new class extends Migration
             $table->foreignId('presentacion_id')
                 ->constrained()
                 ->onDelete('cascade');
+            $table->integer('cantidad');
+            $table->date('fecha_vencimiento');
         });
     }
 

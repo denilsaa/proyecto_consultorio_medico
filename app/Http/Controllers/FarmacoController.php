@@ -18,8 +18,21 @@ class FarmacoController extends Controller
     public $search = '';
     public function index()
     {
-        //return view('modulos.farmaco');
-        $farmacos = PresentacionFarmaco::with(['farmaco', 'presentacion'])->get();
+        return view('modulos.farmaco');
+        $farmacos = PresentacionFarmaco::with(['farmaco', 'presentacion'])
+            ->whereHas('farmaco', function ($query) {
+                $query->where('nombre', 'like', '%' . $this->search . '%');
+            })
+            ->orderBy($this->sort, $this->direction)
+            ->get()
+            ->map(function ($presentacionFarmaco) {
+                return [
+                    'nombre' => $presentacionFarmaco->farmaco->nombre,
+                    'cantidad' => $presentacionFarmaco->cantidad,
+                    'fecha_vencimiento' => $presentacionFarmaco->fecha_vencimiento,
+                    'presentacion' => $presentacionFarmaco->presentacion->nombre
+                ];
+            });
         return json_encode($farmacos);
     }
 

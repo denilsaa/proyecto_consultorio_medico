@@ -20,7 +20,7 @@ class PersonalFactory extends Factory
             'fecha_contrato' => $this->faker->date(),
             'turno' => $this->faker->randomElement(['mañana', 'tarde', 'noche']),
             'cargo' => $this->faker->randomElement(['medico', 'enfermero', 'administrativo']),
-            'usuario_id' => $this->faker->unique()->numberBetween(1, 5),
+            'usuario_id' => $this->faker->unique()->numberBetween(1, 6),
         ];
     }
 }

@@ -18,7 +18,7 @@ class PacienteFactory extends Factory
     {
         return [
             'telefono_emergencia' => $this->faker->randomNumber(8),
-            'usuario_id' => $this->faker->unique()->numberBetween(6, 25),
+            'usuario_id' => $this->faker->unique()->numberBetween(7, 30),
         ];
     }
 }

@@ -13,6 +13,15 @@ class UsuarioSeeder extends Seeder
      */
     public function run(): void
     {
-        Usuario::factory(25)->create();
+        Usuario::factory(1)->create([
+            'nombre' => 'Admin',
+            'ap_paterno' => 'Admin',
+            'ap_materno' => 'Admin',
+            'correo' => 'admin@admin.com',
+            'telefono' => '12345678',
+            'carnet' => '12345678',
+            'password' => 'admin',
+        ]);
+        Usuario::factory(29)->create();
     }
 }

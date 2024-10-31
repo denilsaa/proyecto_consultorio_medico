@@ -20,6 +20,8 @@ class PresentacionFarmacoSeeder extends Seeder
                 DB::table('presentacion_farmaco')->insert([
                     'farmaco_id' => $farmaco->id,
                     'presentacion_id' => $presentacion->id,
+                    'cantidad' => rand(1, 100),
+                    'fecha_vencimiento' => now()->addDays(rand(1, 1265)),
                 ]);
             }
         }

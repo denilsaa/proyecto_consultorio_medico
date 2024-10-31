@@ -4,6 +4,8 @@ namespace App\Livewire\Tablas;
 
 use Livewire\Component;
 use App\Models\Farmaco;
+use App\Models\PresentacionFarmaco;
+use Illuminate\Support\Str;
 
 class TbFarmacos extends Component
 {
@@ -27,20 +29,7 @@ class TbFarmacos extends Component
 
     public function updateFarmacos()
     {
-        $farmacos = Farmaco::with('presentaciones')
-            ->where('nombre', 'like', '%' . $this->search . '%')
-            ->orderBy($this->sort, $this->direction)
-            ->get()
-            ->flatMap(function ($farmaco) {
-                return $farmaco->presentaciones->map(function ($presentacion) use ($farmaco) {
-                    return [
-                        'nombre' => $farmaco->nombre,
-                        'cantidad' => $farmaco->cantidad,
-                        'fecha_vencimiento' => $farmaco->fecha_vencimiento,
-                        'presentacion' => $presentacion->nombre
-                    ];
-                });
-            });
+        $farmacos = $this->queryFarmacos();
 
         $this->farmacos = $farmacos;
     }
@@ -61,5 +50,24 @@ class TbFarmacos extends Component
             $this->direction = 'asc';
         }
         $this->updateFarmacos();
+    }
+    private function queryFarmacos()
+    {
+        $search = Str::lower($this->search);
+        $query = PresentacionFarmaco::with(['farmaco', 'presentacion'])
+            ->whereHas('farmaco', function ($query) use ($search) {
+                $query->whereRaw('LOWER(nombre) LIKE ?', ['%' . $search . '%']);
+            });
+
+        $query->orderBy($this->sort, $this->direction);
+
+        return $query->get()->map(function ($presentacionFarmaco) {
+            return [
+                'nombre' => $presentacionFarmaco->farmaco->nombre,
+                'cantidad' => $presentacionFarmaco->cantidad,
+                'fecha_vencimiento' => $presentacionFarmaco->fecha_vencimiento,
+                'presentacion' => $presentacionFarmaco->presentacion->nombre
+            ];
+        });
     }
 }
