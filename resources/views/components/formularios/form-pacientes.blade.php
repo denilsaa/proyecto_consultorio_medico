@@ -11,7 +11,7 @@
             <!-- Nombre -->
             <div class="col-span-2">
                 <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
-                <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Denilson Asis" required="" value="{{$paciente->usuario->nombre ?? ''}}">
+                <input type="text" name="nombre" id="nombre" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Denilson Asis" required="" value="{{$paciente->usuario->nombre ?? ''}}">
             </div>
             <!-- Apellido Paterno -->
             <div class="col-span-2 sm:col-span-1">
@@ -28,7 +28,19 @@
                 <label for="carnet" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">C.I.</label>
                 <input type="text" name="carnet" id="carnet" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="12085546AE" required="" value="{{$paciente->usuario->carnet ?? ''}}">
             </div>
-            <!-- Fecha de Nacimiento -->
+
+            <!-- Correo Electronico -->
+            {{-- <div class="col-span-2">
+                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correo Electronico</label>
+                <input type="email" email="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="denil@gmai.com" required="" value="{{$paciente->usuario->correo ?? ''}}">
+            </div> --}}
+
+            <div>
+                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correo Electronico</label>
+                <input type="te" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 ark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="correo@gmail.com" required value="denilputa">
+            </div>
+
+            {{-- <!-- Fecha de Nacimiento -->
             <div class="col-span-2 sm:col-span-1">
                 <label for="turno" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha de Nacimiento</label>
                 <div class="relative max-w-sm">
@@ -39,22 +51,18 @@
                     </div>
                     <input id="datepicker-autohide" datepicker datepicker-autohide type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="xx/xx/xxxx" value="{{$paciente->usuario->fecha_nacimiento ?? ''}}">
                 </div>
-            </div>
+            </div> --}}
             <!-- Telefono -->
             <div class="col-span-2 sm:col-span-1">
                 <label for="telefono" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telefono</label>
-                <input type="tel" pattern="[0-9]{7}" name="telefono" id="telefono" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="72072764" required="" value="{{$paciente->usuario->telefono ?? ''}}">
+                <input type="tel" pattern="[0-9]{8}" name="telefono" id="telefono" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="72072764" required="" value="{{$paciente->usuario->telefono ?? ''}}">
             </div>
             <!-- Telefono de emergencia  -->
             <div class="col-span-2 sm:col-span-1">
                 <label for="telefono_emergencia" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telefono de Emergencia</label>
-                <input type="tel" pattern="[0-9]{7}" name="telefono_emergencia" id="telefono_emergencia" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="72072764" required="" value="{{$paciente->telefono_emergencia ?? ''}}">
+                <input type="tel" pattern="[0-9]{8}" name="telefono_emergencia" id="telefono_emergencia" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="72072764" required="" value="{{$paciente->telefono_emergencia ?? ''}}">
             </div>
-            <!-- Correo Electronico -->
-            <div class="col-span-2">
-                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correo Electronico</label>
-                <input type="email" pattern=".+@example\.com" email="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="denil@gmai.com" required="" value="{{$paciente->usuario->correo ?? ''}}">
-            </div>
+
         </div>
         <button type="submit" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-1.5 text-center me-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-500 dark:focus:ring-green-800" >
             {{ $paciente ? 'Guardar Cambios' : 'Agregar' }}

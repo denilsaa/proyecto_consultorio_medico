@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Paciente;
 use Illuminate\Http\Request;
+use App\Models\usuario;
 
 class PacienteController extends Controller
 {
@@ -33,7 +34,29 @@ class PacienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+        $usuario = new Usuario();
+        $usuario->nombre = $request->input('nombre');
+        $usuario->ap_paterno = $request->input('ap_pa');
+        $usuario->ap_materno = $request->input('ap_ma');
+        $usuario->correo = $request->input('email');
+        $usuario->telefono = $request->input('telefono');
+        $usuario->carnet = $request->input('carnet');
+
+        $pass = substr($usuario->nombre, 0, 1) . substr($usuario->ap_paterno, 0, 1) . substr($usuario->ap_materno, 0, 1) . substr($usuario->carnet, -4);
+
+        $usuario->password = bcrypt($pass);
+        $usuario->save();
+
+        // Crear una nueva instancia del modelo Paciente
+        // return json_encode($request->all());
+        $paciente = new Paciente();
+        $paciente->usuario_id = $usuario->id;
+        $paciente->telefono_emergencia = $request->input('telefono_emergencia');
+        $paciente->save();
+        // Redireccionar o devolver una respuesta
+        return redirect()->back()->with('succes', 'Paciente agregado correctamente.');
     }
 
     /**
