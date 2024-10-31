@@ -26,7 +26,7 @@
     </x-componentes.tb-encabezado>
     
     <!-- encabezado de la tabla -->
-    <x-componentes.tb-thead :campos="$cabeceras" />
+    <x-componentes.tb-thead :campos="$cabeceras" :sort="$sort" :direction="$direction"/>
 
     <tbody>
         

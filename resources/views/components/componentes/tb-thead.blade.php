@@ -1,4 +1,4 @@
-@props(['campos'])
+@props(['campos','sort','direction'])
 
 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
     <tr>
@@ -10,14 +10,27 @@
             </div>
         </th>
         @foreach ($campos as $campo)
-            <th scope="col" class="px-6 py-3">
+            <th scope="col" class="px-6 py-3">                
                 <div class="flex items-center">
                     {{$campo}}
                     @if ($campo != '' && $campo != 'Estado')
-                        <button type="button" wire:click="order('{{strtolower(str_replace([' ', 'de', '___'], '_', $campo))}}')">
-                            <svg class="w-3 h-3 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
-                            </svg>
+                        <button type="button" wire:click="order('{{strtolower(str_replace([' ', 'de', '___'], '_', $campo))}}')">                            
+                            @if ($sort == strtolower(str_replace([' ', 'de', '___'], '_', $campo)))
+                                @if ($direction == 'asc')                                    
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6 ms-1.5" viewBox="0 0 16 16">
+                                        <path d="M3.5 3.5a.5.5 0 0 0-1 0v8.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L3.5 12.293zm4 .5a.5.5 0 0 1 0-1h1a.5.5 0 0 1 0 1zm0 3a.5.5 0 0 1 0-1h3a.5.5 0 0 1 0 1zm0 3a.5.5 0 0 1 0-1h5a.5.5 0 0 1 0 1zM7 12.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5"/>
+                                    </svg>
+                                @else
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6 ms-1.5" viewBox="0 0 16 16">
+                                        <path d="M3.5 12.5a.5.5 0 0 1-1 0V3.707L1.354 4.854a.5.5 0 1 1-.708-.708l2-1.999.007-.007a.5.5 0 0 1 .7.006l2 2a.5.5 0 1 1-.707.708L3.5 3.707zm3.5-9a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5M7.5 6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1z"/>
+                                    </svg>
+                                @endif
+                            @else                                
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6 ms-1.5" viewBox="0 0 16 16">
+                                    <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"/>
+                                </svg> 
+                            @endif
+
                         </button>                        
                     @endif
                 </div>
@@ -25,3 +38,13 @@
         @endforeach
     </tr>
 </thead>
+
+{{-- 
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6 ms-1.5" viewBox="0 0 16 16">
+    <path d="M3.5 3.5a.5.5 0 0 0-1 0v8.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L3.5 12.293zm4 .5a.5.5 0 0 1 0-1h1a.5.5 0 0 1 0 1zm0 3a.5.5 0 0 1 0-1h3a.5.5 0 0 1 0 1zm0 3a.5.5 0 0 1 0-1h5a.5.5 0 0 1 0 1zM7 12.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5"/>
+</svg> --}}
+{{-- 
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6 ms-1.5" viewBox="0 0 16 16">
+    <path d="M3.5 12.5a.5.5 0 0 1-1 0V3.707L1.354 4.854a.5.5 0 1 1-.708-.708l2-1.999.007-.007a.5.5 0 0 1 .7.006l2 2a.5.5 0 1 1-.707.708L3.5 3.707zm3.5-9a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5M7.5 6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1z"/>
+</svg>
+ --}}

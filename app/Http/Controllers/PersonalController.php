@@ -19,25 +19,37 @@ class PersonalController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'ap_pa' => 'required|string|max:255',
+            'ap_ma' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:usuarios,correo',
+            'telefono' => 'required|string|max:20',
+            'carnet' => 'required|string|max:20|unique:usuarios,carnet',
+            'fecha_contratacion' => 'required|date',
+            'turno' => 'required|string|max:50',
+            'rol' => 'required|string|max:50',
+        ]);
+
         $usuario = new Usuario();
-        $usuario->nombre = $request->input('nombre'); // Campo 'name' del formulario
-        $usuario->ap_paterno = $request->input('ap_pa'); // Campo 'ap_pa' del formulario
-        $usuario->ap_materno = $request->input('ap_ma'); // Campo 'ap_ma' del formulario
-        $usuario->correo = $request->input('email'); // Campo 'email' del formulario
-        $usuario->telefono = $request->input('telefono'); // Campo 'telefono' del formulario
-        $usuario->carnet = $request->input('carnet'); // Campo 'carnet' del formulario
+        $usuario->nombre = $request->input('nombre');
+        $usuario->ap_paterno = $request->input('ap_pa');
+        $usuario->ap_materno = $request->input('ap_ma');
+        $usuario->correo = $request->input('email');
+        $usuario->telefono = $request->input('telefono');
+        $usuario->carnet = $request->input('carnet');
 
         $pass = substr($usuario->nombre, 0, 1) . substr($usuario->ap_paterno, 0, 1) . substr($usuario->ap_materno, 0, 1) . substr($usuario->carnet, -4);
-        $usuario->password = bcrypt($pass); // Contraseña generada a partir de los datos del formulario
-        $usuario->save(); // Guardar en la tabla usuarios
+        $usuario->password = bcrypt($pass);
+        $usuario->save();
 
         // Crear una nueva instancia del modelo Personal
         $personal = new Personal();
-        $personal->usuario_id = $usuario->id; // Asociar el ID del usuario creado
+        $personal->usuario_id = $usuario->id;
         $personal->fecha_contrato = date('Y-m-d', strtotime($request->input('fecha_contratacion')));
-        $personal->turno = $request->input('turno'); // Campo 'turno' del formulario
-        $personal->cargo = $request->input('rol'); // Agregar el campo 'rol' si lo necesitas
-        $personal->save(); // Guardar en la tabla personal
+        $personal->turno = $request->input('turno');
+        $personal->cargo = $request->input('rol');
+        $personal->save();
 
         // Redireccionar o devolver una respuesta
         return redirect()->back()->with('success', 'Personal agregado correctamente.');
