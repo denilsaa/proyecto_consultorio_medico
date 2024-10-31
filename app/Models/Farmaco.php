@@ -12,8 +12,6 @@ class Farmaco extends Model
 
     protected $fillable = [
         'nombre',
-        'cantidad',
-        'fecha_vencimiento',
         'personal_id',
     ];
 
@@ -48,22 +46,6 @@ class Farmaco extends Model
         return Attribute::make(
             get: fn($value) => ucfirst($value),
             set: fn($value) => strtolower($value),
-        );
-    }
-
-    protected function cantidad(): Attribute
-    {
-        return Attribute::make(
-            get: fn($value) => (int) $value,
-            set: fn($value) => (int) $value,
-        );
-    }
-
-    protected function fechaVencimiento(): Attribute
-    {
-        return Attribute::make(
-            get: fn($value) => \Carbon\Carbon::parse($value)->format('d-m-Y'),
-            set: fn($value) => \Carbon\Carbon::parse($value)->toDateString(),
         );
     }
 }

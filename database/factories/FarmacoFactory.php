@@ -18,8 +18,6 @@ class FarmacoFactory extends Factory
     {
         return [
             'nombre' => $this->faker->name(),
-            'cantidad' => $this->faker->randomNumber(3, true),
-            'fecha_vencimiento' => $this->faker->date(),
             'personal_id' => $this->faker->numberBetween(1, 5),
         ];
     }

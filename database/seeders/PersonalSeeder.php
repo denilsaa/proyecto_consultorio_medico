@@ -14,6 +14,12 @@ class PersonalSeeder extends Seeder
      */
     public function run(): void
     {
+        /*         Personal::factory(1)->create([
+            'fecha_contrato' => '2021-01-01',
+            'turno' => 'mañana',
+            'cargo' => 'medico',
+            'usuario_id' => 1,
+        ]); */
         Personal::factory(5)->create();
     }
 }

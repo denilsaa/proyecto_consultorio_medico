@@ -14,8 +14,6 @@ return new class extends Migration
         Schema::create('farmacos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->integer('cantidad');
-            $table->date('fecha_vencimiento');
             $table->foreignId('personal_id')
                 ->constrained()
                 ->onDelete('cascade');
