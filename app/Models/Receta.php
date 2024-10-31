@@ -17,9 +17,9 @@ class Receta extends Model
         'historial_id',
     ];
 
-    public function farmaco()
+    public function presentacionFarmaco()
     {
-        return $this->belongsTo(Farmaco::class);
+        return $this->belongsTo(PresentacionFarmaco::class);
     }
 
     public function historial()

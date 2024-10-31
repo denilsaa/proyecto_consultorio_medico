@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Farmaco;
+use App\Models\PresentacionFarmaco;
 use Illuminate\Http\Request;
 
 class FarmacoController extends Controller
@@ -17,31 +18,8 @@ class FarmacoController extends Controller
     public $search = '';
     public function index()
     {
-        return view('modulos.farmaco');
-        /*         $farmacos = Farmaco::with('presentaciones')->get()->flatMap(function ($farmaco) {
-            return $farmaco->presentaciones->map(function ($presentacion) use ($farmaco) {
-                return [
-                    'nombre' => $farmaco->nombre,
-                    'cantidad' => $farmaco->cantidad,
-                    'fecha_vencimiento' => $farmaco->fecha_vencimiento,
-                    'presentacion' => $presentacion->nombre
-                ];
-            });
-        }); */
-        $farmacos = Farmaco::with('presentaciones')
-            ->where('nombre', 'like', '%' . $this->search . '%')
-            ->orderBy($this->sort, $this->direction)
-            ->get()
-            ->flatMap(function ($farmaco) {
-                return $farmaco->presentaciones->map(function ($presentacion) use ($farmaco) {
-                    return [
-                        'nombre' => $farmaco->nombre,
-                        'cantidad' => $farmaco->cantidad,
-                        'fecha_vencimiento' => $farmaco->fecha_vencimiento,
-                        'presentacion' => $presentacion->nombre
-                    ];
-                });
-            });
+        //return view('modulos.farmaco');
+        $farmacos = PresentacionFarmaco::with(['farmaco', 'presentacion'])->get();
         return json_encode($farmacos);
     }
 

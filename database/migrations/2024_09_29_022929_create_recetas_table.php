@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('recetas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('farmaco_id')
-                ->constrained()
+            $table->foreignId('presentacion_farmaco_id')
+                ->constrained('presentacion_farmaco')
                 ->onDelete('cascade');
             $table->foreignId('historial_id')
                 ->constrained()

@@ -12,10 +12,17 @@ class Presentacion extends Model
 
     protected $fillable = ['nombre',];
 
+    protected $hidden = [
+        'id',
+        'created_at',
+        'updated_at',
+    ];
+
     public function farmacos()
     {
-        return $this->belongsToMany(Farmaco::class, 'presentacion_farmaco', 'presentacion_id', 'farmaco_id');
+        return $this->hasMany(PresentacionFarmaco::class);
     }
+
     protected function nombre(): Attribute
     {
         return Attribute::make(
