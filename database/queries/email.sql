@@ -1,0 +1,1 @@
+select * from "password_reset_tokens" where "email" is null limit 1
