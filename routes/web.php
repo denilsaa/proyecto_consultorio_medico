@@ -36,25 +36,25 @@ Route::get('/prueba', [HomeController::class, 'prueba']);
 
 Route::get('/home', HomeController::class)->name('home')->middleware('auth', 'verified');
 
-Route::resource('personal', PersonalController::class);
+Route::resource('personal', PersonalController::class)->middleware('auth');
 
-Route::resource('pacientes', PacienteController::class);
+Route::resource('pacientes', PacienteController::class)->middleware('auth');
 
-Route::resource('citas', CitaController::class);
+Route::resource('citas', CitaController::class)->middleware('auth');
 
-Route::resource('recibos', ReciboController::class);
+Route::resource('recibos', ReciboController::class)->middleware('auth');
 
-Route::resource('presentaciones', PresentacionController::class);
+Route::resource('presentaciones', PresentacionController::class)->middleware('auth');
 
-Route::resource('farmacos', FarmacoController::class);
+Route::resource('farmacos', FarmacoController::class)->middleware('auth');
 
-Route::resource('historiales', HistorialController::class);
+Route::resource('historiales', HistorialController::class)->middleware('auth');
 
-Route::resource('triajes', TriajeController::class);
+Route::resource('triajes', TriajeController::class)->middleware('auth');
 
-Route::resource('recetas', RecetaController::class);
+Route::resource('recetas', RecetaController::class)->middleware('auth');
 
-Route::resource('roles', RolController::class);
+Route::resource('roles', RolController::class)->middleware('auth');
 
 use App\Livewire\Counter;
 
