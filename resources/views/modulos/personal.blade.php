@@ -49,17 +49,8 @@
                                 </ul>
                             </div>
                         </div>
-                        <!-- nuevo -->
-                        <div class="ml-2">
-                            <!-- Boton Modal -->
-                            <button data-modal-target="{{$new}}" data-modal-toggle="{{$new}}" class="text-white hover:text-white bg-blue-500 border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-1.5 text-center me-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 transition-all duration-200" type="button">
-                                Nuevo
-                            </button>
-                            <!-- Modal -->
-                            <div>
-                                <x-formularios.form-personal titulo="Nuevo Personal" modal="{{$new}}"/>
-                            </div>
-                        </div>
+
+                        @livewire('create-personal')
                     </div>
                 </caption>
 
@@ -185,9 +176,9 @@
                             </button>
 
                             <!-- modal -->
-                            <div>
+                            {{-- <div>
                                 <x-formularios.form-personal titulo="Editar Informacion" modal="{{$edit}}" :id="$personal->id" :personal="$personal" />
-                            </div>
+                            </div> --}}
                             
                         </td>
                     </tr>

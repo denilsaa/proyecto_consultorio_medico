@@ -19,6 +19,7 @@ class PersonalController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'nombre' => 'required|string|max:255',
             'ap_pa' => 'required|string|max:255',

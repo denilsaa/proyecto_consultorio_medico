@@ -1,6 +1,6 @@
-@props(['titulo','modal','id' => null, 'personal' => null]) <!-- un prop es un valor que se pasa a un componente de Blade. -->
+@props(['titulo','id' => null, 'personal' => null]) <!-- un prop es un valor que se pasa a un componente de Blade. -->
 
-<x-componentes.form-base :titulo="$titulo" :modal="$modal">
+<x-componentes.form-base :titulo="$titulo">
     <!-- Modal body -->
     <form method="POST" action="{{ $personal ? route('personal.update', $personal->id) : route('personal.store') }}" class="p-4 md:p-5">
         @csrf

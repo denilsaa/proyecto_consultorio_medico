@@ -43,6 +43,7 @@
                 </ul>
             </div>
         </div>
+        @@livewire('create-personal',)
         <!-- Nuevo -->
         <div class="ml-2">
             <!-- Modal toggle -->
