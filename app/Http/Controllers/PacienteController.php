@@ -72,7 +72,7 @@ class PacienteController extends Controller
      */
     public function edit(Paciente $paciente)
     {
-        //
+        return json_encode($paciente->load('usuario'));
     }
 
     /**
@@ -80,8 +80,21 @@ class PacienteController extends Controller
      */
     public function update(Request $request, Paciente $paciente)
     {
-        //
+        $usuario = $paciente->usuario;
+        $usuario->nombre = $request->input('nombre');
+        $usuario->ap_paterno = $request->input('ap_pa');
+        $usuario->ap_materno = $request->input('ap_ma');
+        $usuario->correo = $request->input('email');
+        $usuario->telefono = $request->input('telefono');
+        $usuario->carnet = $request->input('carnet');
+        $usuario->save();
+
+        $paciente->telefono_emergencia = $request->input('telefono_emergencia');
+        $paciente->save();
+        return redirect()->back()->with('success', 'Paciente actualizado correctamente.');
     }
+       
+    
 
     /**
      * Remove the specified resource from storage.
