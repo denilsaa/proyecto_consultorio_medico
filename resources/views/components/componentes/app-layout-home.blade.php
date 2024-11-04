@@ -56,11 +56,16 @@ $titulo = $titulo ?? 'Sin Titulo';
 
     <x-componentes.nav-home/>
 
-    <x-componentes.aside-home/>
+    @livewire('main-layout')
+{{-- 
+    <x-componentes.aside-home/> --}}
+    @php
+    $slot = 'Hola';
+    @endphp
 
-    <div class="p-4 pt-20 sm:ml-64 dark:bg-[#466EAB]">
+{{--     <div class="p-4 pt-20 sm:ml-64 dark:bg-[#466EAB]">
         {{ $slot }}
-    </div>
+    </div> --}}
     @livewireScripts
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
 </body>

@@ -2,10 +2,10 @@
 
 @if (!isset($item['subitems']))
 <li>
-    <a href="{{$item['uri']}}" class="flex items-center p-2 rounded-lg text-white hover:bg-gray-700 transition-all duration-300 group hover:shadow-xl">
+    <button wire:click="$set('view', '{{$item['view']}}')"  class="flex items-center p-2 rounded-lg text-white hover:bg-gray-700 transition-all duration-300 group hover:shadow-xl w-full">
         {{$slot}}
         <span class="ms-3">{{$item['titulo']}}</span>
-    </a>
+    </button>
 </li>
 @else
 @php
@@ -21,7 +21,7 @@ $dropdown = 'dropdown-'.substr($item['titulo'], 0, 2);
     </button>
     <ul id="{{$dropdown}}" class="hidden py-2 space-y-2">
         @foreach ($item['subitems'] as $subitem)
-        @if (isset($subitem['uri']) && isset($subitem['titulo']))
+        @if (isset($subitem['view']) && isset($subitem['titulo']))
         <li>
             <x-componentes.item-aside-home :item="$subitem">
             </x-componentes.item-aside-home>
@@ -32,5 +32,4 @@ $dropdown = 'dropdown-'.substr($item['titulo'], 0, 2);
         @endforeach
     </ul>
 </li>
-
 @endif

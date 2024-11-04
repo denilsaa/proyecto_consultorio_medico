@@ -13,9 +13,15 @@ class Personal extends Model
     protected $table = 'personals';
 
     protected $fillable = [
+        'usuario_id',
         'fecha_contrato',
         'turno',
         'cargo'
+    ];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at'
     ];
 
     public function citas()

@@ -175,10 +175,10 @@
                                 </svg>        
                             </button>
 
-
+{{-- 
                             <div>
                                 <x-formularios.form-personal titulo="Editar Informacion" modal="edit-modal-{{$personal->id}}" :id="$personal->id" :personal="$personal" />
-                            </div>
+                            </div> --}}
 
                             
                             
