@@ -12,6 +12,7 @@ use App\Http\Controllers\PresentacionController;
 use App\Http\Controllers\ReciboController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Framework\Constraint\Count;
 
@@ -55,6 +56,15 @@ Route::resource('triajes', TriajeController::class)->middleware('auth');
 Route::resource('recetas', RecetaController::class)->middleware('auth');
 
 Route::resource('roles', RolController::class)->middleware('auth');
+
+Route::get('/send-test-email', function () {
+    Mail::raw('This is a test email', function ($message) {
+        $message->to('test@example.com')
+            ->subject('Test Email');
+    });
+
+    return 'Email sent!';
+});
 
 use App\Livewire\Counter;
 

@@ -19,8 +19,8 @@
         <nav class=" bg-white border-gray-200 dark:bg-gray-900">
             <div class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto p-4">
                 <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-                    <img src="https://cdn-icons-png.flaticon.com/512/4346/4346669.png" class="h-8" alt="Flowbite Logo" />
-                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white text-black">Salud Vital</span>
+                    <x-application-logo class=" w-24 h-auto fill-current text-gray-500 drop-shadow-[2px_4px_3px_rgba(255,255,255,0.78)]" />
+
                 </a>
                 <div class="flex items-center md:order-2 space-x-1 md:space-x-2 rtl:space-x-reverse">
                     @if (Route::has('login'))
@@ -32,11 +32,11 @@
                                 Dashboard
                             </a>
                     @else
-                            <a href="{{ route('login') }}" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">
+                            <a href="{{ route('login') }}" class="text-gray-800 dark:text-white hover:bg-gray-300 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">
                                 {{ __('Login') }}
                             </a>
                             @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                                <a href="{{ route('register') }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 ml-4">
                                     {{ __('Register') }}
                                 </a>
                             @endif

@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="fixed top-0 z-50 w-full bg-sidebar border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+<nav x-data="{ open: false }" class="fixed top-0 z-50 w-full bg-gradient-to-r from-[#2B32B2] to-[#1488CC] border-b border-gray-200 dark:border-gray-700 dark:bg-gradient-to-br dark:from-[#1d3940] dark:to-[#1488CC]">
     <div class="px-3 py-3 lg:px-5 lg:pl-3">
         <div class="flex items-center justify-between">
             <div class="flex items-center justify-start rtl:justify-end">
@@ -9,8 +9,7 @@
                     </svg>
                 </button>
                 <a href="{{route('home')}}" class="flex ms-2 md:me-24">
-                    <img src="https://cdn-icons-png.flaticon.com/512/4346/4346669.png" class="h-8 me-3" alt="FlowBite Logo" />
-                    <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap text-white"> Consultorio </span>
+                    <x-application-logo class=" w-24 h-auto fill-current text-gray-500 dark:drop-shadow-[1px_1px_10px_rgba(0,0,0,1)] drop-shadow-[-0.8px_-1px_0_rgba(255,255,255,0.4)]" />
                 </a>
             </div>
             
@@ -71,37 +70,6 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-
-
-
-            
-
-        </div>
-    </div>
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-        </div>
-        <div class="pt-4 pb-1 border-t border-gray-200">
-            <div class="px-4">
-                <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-            </div>
-            <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
-                </x-responsive-nav-link>
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <x-responsive-nav-link href="/"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Log Out') }}
-                    </x-responsive-nav-link>
-                </form>
             </div>
         </div>
     </div>

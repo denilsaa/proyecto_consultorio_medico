@@ -111,4 +111,9 @@ class Usuario extends Authenticatable
     {
         return $this->hasMany(Personal::class);
     }
+
+    public function getEmailForPasswordReset()
+    {
+        return $this->correo;
+    }
 }
