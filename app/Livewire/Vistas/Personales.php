@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Vistas;
 
-use App\Models\Paciente;
 use Livewire\WithPagination;
 use App\Models\Personal;
 use App\Models\Usuario;
