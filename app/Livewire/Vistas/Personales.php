@@ -7,16 +7,19 @@ use Livewire\WithPagination;
 use App\Models\Personal;
 use App\Models\Usuario;
 use Livewire\Component;
+use Livewire\Attributes\Validate;
 use Illuminate\Support\Str;
 
 class Personales extends Component
 {
     use WithPagination;
+
     public $open = false;
     public $open_edit = false;
     public $search = '';
     public $sort = 'id';
     public $direction = 'desc';
+    //public $personales;
     public $cabeceras = [
         'Nombre',
         'Carnet',
@@ -27,34 +30,33 @@ class Personales extends Component
         'Estado',
         ''
     ];
-    public $personales;
-    public $nombre, $ap_paterno, $ap_materno, $correo, $telefono, $carnet, $fecha_contrato, $turno, $cargo;
-
-    public function mount()
-    {
-        $this->updatePersonales();
-    }
-
-    public function updatedSearch()
-    {
-        $this->updatePersonales();
-    }
-
-    public function updatedOpen()
-    {
-        $this->updatePersonales();
-    }
+    /* campos form */
+    #[Validate('required|max:30|min:3')]
+    public $nombre;
+    #[Validate('required|max:30|min:3')]
+    public $ap_paterno;
+    #[Validate('required|max:30|min:3')]
+    public $ap_materno;
+    #[Validate('required|email|unique:usuarios')]
+    public $correo;
+    #[Validate('required|numeric|digits:8')]
+    public $telefono;
+    #[Validate('required|max:11|min:10|unique:usuarios')]
+    public $carnet;
+    #[Validate('required|date')]
+    public $fecha_contrato;
+    #[Validate('required|in:Mañana,Tarde,Noche')]
+    public $turno;
+    #[Validate('required|in:Doctor,Enfermera,Enfermero,Secretaria')]
+    public $cargo;
 
     public function render()
     {
+        $personales = $this->queryPersonals();
+        $this->resetPage();
         return view('livewire.vistas.personales', [
-            'personales' => $this->personales
+            'personales' => $personales
         ]);
-    }
-
-    private function updatePersonales()
-    {
-        $this->personales = $this->queryPersonals();
     }
 
     public function order($sort)
@@ -70,12 +72,12 @@ class Personales extends Component
         }
 
         if (in_array($sort, $validColumns) || in_array($sort, $userColumns)) {
-            $this->updatePersonales();
+            $this->render();
         } else {
             // Manejar el caso de una columna no válida
             $this->sort = 'id';
             $this->direction = 'desc';
-            $this->updatePersonales();
+            $this->render();
         }
     }
 
@@ -95,13 +97,8 @@ class Personales extends Component
         } else {
             $query->orderBy('personals.' . $this->sort, $this->direction);
         }
-        return $query->paginate(10, [
-            'personals.id as personal_id',
-            'personals.usuario_id',
-            'personals.fecha_contrato',
-            'personals.turno',
-            'personals.cargo'
-        ]);
+
+        return $query->paginate(5);
     }
 
     public function save()
@@ -125,7 +122,7 @@ class Personales extends Component
 
         $this->dispatch('new_per', message: 'Personal creado con éxito', pass: $password);
 
-        $this->updatePersonales();
+        //$this->render();
     }
 
     private function newPersonal()

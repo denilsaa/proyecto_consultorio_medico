@@ -49,12 +49,7 @@ class HomeController extends Controller
         } else {
             $query->orderBy('personals.' . $this->sort, $this->direction);
         }
-        return $query->get([
-            'personals.id as personal_id',
-            'personals.usuario_id',
-            'personals.fecha_contrato',
-            'personals.turno',
-            'personals.cargo'
-        ]);
+
+        return $query->paginate(5);
     }
 }

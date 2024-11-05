@@ -18,7 +18,6 @@
         @endif
 
         <tbody>
-
             @if($personales->isEmpty())
             <x-componentes.no-data colspan="{{count($cabeceras)+1}}" mensaje="No hay personales registrados." />
             @else
@@ -29,7 +28,13 @@
             </x-componentes.tb-fila>
             @endforeach
             @endif
-        </tbody>{{--
-        {{$personales->links()}} --}}
+
+        </tbody>
     </table>
+    @if ($personales->hasPages())
+
+    <div class="px-4 py-2 dark:bg-gray-700">
+        {{$personales->links()}}
+    </div>
+    @endif
 </div>
