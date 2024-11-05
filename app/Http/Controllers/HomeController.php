@@ -38,9 +38,12 @@ class HomeController extends Controller
         $search = Str::lower($this->search);
         $query = Personal::query()->with('usuario')
             ->whereHas('usuario', function ($query) use ($search) {
-                $query->where('nombre', 'like', '%' . $search . '%')
-                    ->orWhere('ap_paterno', 'like', '%' . $search . '%')
-                    ->orWhere('ap_materno', 'like', '%' . $search . '%');
+                $query->where(function ($query) use ($search) {
+                    $query->where('nombre', 'like', '%' . $search . '%')
+                        ->orWhere('carnet', 'like', '%' . $search . '%')
+                        ->orWhere('ap_paterno', 'like', '%' . $search . '%')
+                        ->orWhere('ap_materno', 'like', '%' . $search . '%');
+                })->where('estado_usuario', true);
             });
 
         if (in_array($this->sort, ['nombre', 'ap_paterno', 'ap_materno', 'carnet'])) {
@@ -49,12 +52,7 @@ class HomeController extends Controller
         } else {
             $query->orderBy('personals.' . $this->sort, $this->direction);
         }
-        return $query->get([
-            'personals.id as personal_id',
-            'personals.usuario_id',
-            'personals.fecha_contrato',
-            'personals.turno',
-            'personals.cargo'
-        ]);
+
+        return $query->paginate(5);
     }
 }

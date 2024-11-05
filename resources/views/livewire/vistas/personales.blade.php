@@ -1,5 +1,5 @@
 <div
-    class="relative overflow-x-auto sm:rounded-2xl shadow-[0px_10px_50px_20px] shadow-sky-500/50 dark:shadow-gray-700/50 ">
+    class="relative overflow-x-auto sm:rounded-2xl shadow-[0px_10px_50px_20px] shadow-sky-500/50 dark:shadow-gray-700/50">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <x-componentes.tb-encabezado titulo="Personal" viewBox="0 0 24 24">
             <x-slot name="icono">
@@ -16,9 +16,13 @@
             <x-formularios.form-personal titulo="Nuevo Personal" />
         </div>
         @endif
+        @if ($open_edit)
+        <div>
+            <x-formularios.form-personal titulo="Editar Personal" :id=$id />
+        </div>
+        @endif
 
         <tbody>
-
             @if($personales->isEmpty())
             <x-componentes.no-data colspan="{{count($cabeceras)+1}}" mensaje="No hay personales registrados." />
             @else
@@ -29,7 +33,13 @@
             </x-componentes.tb-fila>
             @endforeach
             @endif
-        </tbody>{{--
-        {{$personales->links()}} --}}
+
+        </tbody>
     </table>
+    @if ($personales->hasPages())
+
+    <div class="px-4 py-2 dark:bg-gray-700">
+        {{$personales->links()}}
+    </div>
+    @endif
 </div>

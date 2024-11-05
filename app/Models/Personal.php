@@ -13,13 +13,14 @@ class Personal extends Model
     protected $table = 'personals';
 
     protected $fillable = [
-        'usuario_id',
         'fecha_contrato',
         'turno',
-        'cargo'
+        'cargo',
+        'usuario_id'
     ];
 
     protected $hidden = [
+        'usuario_id',
         'created_at',
         'updated_at'
     ];
@@ -41,7 +42,7 @@ class Personal extends Model
     protected function fechaContrato(): Attribute
     {
         return Attribute::make(
-            set: fn($value) => date('Y-m-d', strtotime($value)),
+            set: fn($value) => date('d-m-y', strtotime($value)),
             get: fn($value) => date('d-m-Y', strtotime($value))
         );
     }
