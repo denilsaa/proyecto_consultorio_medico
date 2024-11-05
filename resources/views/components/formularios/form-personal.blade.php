@@ -1,4 +1,4 @@
-@props(['titulo','id' => null, 'personal' => null])
+@props(['titulo','id' => null])
 <!-- un prop es un valor que se pasa a un componente de Blade. -->
 
 <x-componentes.form-base :titulo="$titulo">
@@ -80,14 +80,11 @@
             <label for="cargo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rol</label>
             <select wire:model.live="cargo"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                <option value="" {{ $personal && $personal->cargo == '' ? 'selected' : '' }}>Seleccione el cargo
+                <option>Seleccione el cargo
                 </option>
-                <option value="Doctor" {{ $personal && Str::lower( $personal->cargo ) == 'doctor' ? 'selected' : ''
-                    }}>Doctor</option>
-                <option value="Enfermera" {{ $personal && Str::lower( $personal->cargo ) == 'enfermera' ? 'selected' :
-                    '' }}>Enfermera</option>
-                <option value="Enfermero" {{ $personal && Str::lower( $personal->cargo ) == 'enfermero' ? 'selected' :
-                    '' }}>Enfermero</option>
+                <option value="Doctor">Doctor</option>
+                <option value="Enfermera">Enfermera</option>
+                <option value="Enfermero">Enfermero</option>
             </select>
             <x-input-error :messages="$errors->get('cargo')" class="mt-2" />
         </div>
@@ -96,21 +93,28 @@
             <label for="turno" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Turno</label>
             <select wire:model.live="turno"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                <option value="" {{ $personal && Str::lower($personal->turno) == '' ? 'selected' : '' }}>Seleccione el
+                <option value="">Seleccione el
                     turno</option>
-                <option value="Mañana" {{ $personal && Str::lower($personal->turno) == 'mañana' ? 'selected' : ''
-                    }}>Mañana</option>
-                <option value="Tarde" {{ $personal && Str::lower($personal->turno) == 'tarde' ? 'selected' : '' }}>Tarde
-                </option>
-                <option value="Noche" {{ $personal && Str::lower($personal->turno) == 'noche' ? 'selected' : '' }}>Noche
-                </option>
+                <option value="Mañana">Mañana</option>
+                <option value="Tarde">Tarde</option>
+                <option value="Noche">Noche</option>
             </select>
             <x-input-error :messages="$errors->get('turno')" class="mt-2" />
         </div>
     </div>
+    @if($id)
+    <button type="button" wire:click="update"
+        class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-1.5 text-center me-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-500 dark:focus:ring-green-800">
+        Guardar Cambios
+    </button>
+
+    @else
     <button type="button" wire:click="save"
         class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-1.5 text-center me-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-500 dark:focus:ring-green-800">
-        {{ $personal ? 'Guardar Cambios' : 'Agregar' }}
+        Agregar
     </button>
+
+    @endif
+
 
 </x-componentes.form-base>

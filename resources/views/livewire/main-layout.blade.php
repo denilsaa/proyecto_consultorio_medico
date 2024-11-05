@@ -1,46 +1,46 @@
-<div>    
-    <x-componentes.aside-home/>
+<div>
+    <x-componentes.aside-home />
     <div class="sm:ml-44 dark:bg-[#4985a8] w-auto h-screen sm:pt-24 pt-20 sm:p-10">
-        <div class="w-full flex-grow rounded-xl mb-2 ">
-            
+        <div class="w-full flex-grow rounded-xl">
+
             @switch($view)
-                @case('dashboard')
-                    @livewire('vistas.dashboard')
-                    @break
+            @case('dashboard')
+            @livewire('vistas.dashboard')
+            @break
 
-                @case('personales')
-                    @livewire('vistas.personales')
-                    @break
-                
-                @case('pacientes')
-                    @livewire('vistas.pacientes')
-                    @break
-                
-                @case('farmacos')
-                    @livewire('vistas.farmacos')
-                    @break
+            @case('personales')
+            @livewire('vistas.personales')
+            @break
 
-                @case('presentaciones')
-                    @livewire('vistas.presentaciones')
-                    @break
+            @case('pacientes')
+            @livewire('vistas.pacientes')
+            @break
 
-                @case('citas')
-                    @livewire('vistas.citas')
-                    @break
+            @case('farmacos')
+            @livewire('vistas.farmacos')
+            @break
 
-                @case('historiales')
-                    @livewire('vistas.historiales')
-                    @break
+            @case('presentaciones')
+            @livewire('vistas.presentaciones')
+            @break
 
-                @case('recetas')
-                    @livewire('vistas.recetas')
-                    @break
+            @case('citas')
+            @livewire('vistas.citas')
+            @break
 
-                @default
-                    <p>Vista no encontrada</p>
+            @case('historiales')
+            @livewire('vistas.historiales')
+            @break
+
+            @case('recetas')
+            @livewire('vistas.recetas')
+            @break
+
+            @default
+            <p>Vista no encontrada</p>
             @endswitch
-            
-        </div>        
+
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -70,6 +70,31 @@
                     }
                 });
             });
+
+            Livewire.on('edit', (event) => {
+                        console.log(event);
+                        let timerInterval;
+                        Swal.fire({
+                        title: event.message,
+                        html: "Esperé se esta subiendo los datos <b></b> .<br> Su contraseña es: <b>"+event.pass+"</b>",
+                        timer: 4000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                        Swal.showLoading();
+                        const timer = Swal.getPopup().querySelector("b");
+                        timerInterval = setInterval(() => {
+                        timer.textContent = `${Swal.getTimerLeft()}`;
+                        }, 100);
+                        },
+                        willClose: () => {
+                        clearInterval(timerInterval);
+                        }
+                        }).then((result) => {
+                        if (result.dismiss === Swal.DismissReason.timer) {
+                        console.log("I was closed by the timer");
+                        }
+                        });
+                        });
         });
 
     </script>
