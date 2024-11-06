@@ -13,11 +13,14 @@ class Personales extends Component
 {
     use WithPagination;
 
+    public $ids = [];
     public $open = false;
     public $open_edit = false;
     public $search = '';
     public $sort = 'id';
     public $direction = 'desc';
+    public $cant = 5;
+    public $estado = true;
     public $id;
     //public $personales;
     public $cabeceras = [
@@ -91,7 +94,7 @@ class Personales extends Component
                         ->orWhere('carnet', 'like', '%' . $search . '%')
                         ->orWhere('ap_paterno', 'like', '%' . $search . '%')
                         ->orWhere('ap_materno', 'like', '%' . $search . '%');
-                })->where('estado_usuario', true);
+                })->where('estado_usuario', $this->estado);
             });
 
         if (in_array($this->sort, ['nombre', 'ap_paterno', 'ap_materno', 'carnet'])) {
@@ -101,7 +104,7 @@ class Personales extends Component
             $query->orderBy('personals.' . $this->sort, $this->direction);
         }
 
-        return $query->paginate(5);
+        return $query->paginate($this->cant);
     }
 
     public function save()
@@ -215,5 +218,19 @@ class Personales extends Component
     {
         $this->open_edit = false;
         $this->open = false;
+    }
+
+    public function add_id($id){
+        if (isset($this->ids[$id]) && $this->ids[$id] === true) {
+            unset($this->ids[$id]);
+        } else {
+            $this->ids[$id] = true;
+        }
+    }
+
+    public function new_estado($id,$estado){
+        $this->dispatch('delete', massage: 'Personal eliminado con éxito');
+        $personal = Personal::find($id);       
+        $usuario = Usuario::find($personal->usuario_id)->update(['estado_usuario' => $estado]);
     }
 }
