@@ -1,4 +1,4 @@
-@props(['titulo', 'viewBox' => '0 0 0 0'])
+@props(['titulo', 'viewBox' => '0 0 0 0','estado'])
 <caption
     class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
     <!-- Titulo -->
@@ -32,39 +32,56 @@
         </div>
         <!-- Acciones -->
         <div class="ml-2">
-            <button id="dropdownButtonAccionesPersonal" data-dropdown-toggle="dropdownAccionesPersonal"
-                class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-                type="button">
-                <span class="sr-only">Action button</span>
-                Acciones
-                <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 10 6">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="m1 1 4 4 4-4" />
-                </svg>
-            </button>
-
-            <div id="dropdownAccionesPersonal"
-                class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-                <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
-                    aria-labelledby="dropdownButtonAccionesPersonal">
-                    <li>
-                        <a href="#"
-                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Activar</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Desactivar</a>
-                    </li>
-                </ul>
-            </div>
+            <select
+                class="block text-sm text-gray-500 bg-white border border-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-100 font-medium rounded-lg px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:focus:ring-gray-700"
+                wire:model.live="cant">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
         </div>
-        <!-- Nuevo -->
         <div class="ml-2">
-            <!-- Modal toggle -->
-            <x-componentes.btn-new wire:click="$set('open',true)">
-                Agregar {{$titulo}}
-            </x-componentes.btn-new>
+            <select
+            class="block text-sm text-gray-500 bg-white border border-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-100 font-medium rounded-lg px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:focus:ring-gray-700"
+            wire:model.live="estado">
+            <option value="true">Activos</option>
+            <option value="false">Inactivos</option>
+            </select>
+        </div>
+        <div class="flex">
+
+{{--             <div class="ml-2">
+                @if ($estado == 'true')
+                <button wire:click="delete"
+                    class="text-white hover:text-white bg-red-600 border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-1.5 text-center me-2 dark:border-red-500 dark:text-gray-100 dark:hover:text-black dark:hover:bg-red-500 dark:focus:ring-red-800 transition-all duration-200">
+                    <svg class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a 1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z" />
+                    </svg>
+                </button>
+                @else
+                <button wire:click="undo"
+                    class="text-white hover:text-white bg-yellow-400 border border-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-1.5 text-center me-2 dark:border-yellow-500 dark:text-gray-100 dark:hover:text-black dark:hover:bg-yellow-500 dark:focus:ring-yellow-800 transition-all duration-200">
+                    <svg class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17.651 7.65a7.131 7.131 0 0 0-12.68 3.15M18.001 4v4h-4m-7.652 8.35a7.13 7.13 0 0 0 12.68-3.15M6 20v-4h4" />
+                    </svg>
+                </button>
+                @endif
+            </div> --}}
+            
+            <!-- Nuevo -->
+            <div class="ml-2 mr-8">
+                <!-- Modal toggle -->
+                <x-componentes.btn-new wire:click="$set('open',true)">
+                    <svg class="w-6 h-6 text-white" awidth="24"
+                            height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12h4m-2 2v-4M4 18v-1a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1Zm8-10a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    </svg>
+                </x-componentes.btn-new>
+            </div>
         </div>
     </div>
 </caption>
