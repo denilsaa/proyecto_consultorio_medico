@@ -229,6 +229,7 @@ class Personales extends Component
     }
 
     public function new_estado($id,$estado){
+        $this->dispatch('delete', massage: 'Personal eliminado con éxito');
         $personal = Personal::find($id);       
         $usuario = Usuario::find($personal->usuario_id)->update(['estado_usuario' => $estado]);
     }

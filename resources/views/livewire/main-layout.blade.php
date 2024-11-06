@@ -76,7 +76,7 @@
                 let timerInterval;
                 Swal.fire({
                     title: event.message,
-                    html: "Esperé se esta subiendo los datos <b></b> .<br> Su contraseña es: <b>"+event.pass+"</b>",
+                    html: "Esperé se esta subiendo los datos <b></b> .",
                     timer: 4000,
                     timerProgressBar: true,
                     didOpen: () => {
@@ -95,6 +95,18 @@
                     }
                 });
             });
+
+            Livewire.on('delete', (event) => {
+                console.log(event);
+                Swal.fire({
+                    title: event.message,
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+            
+            
         });
 
     </script>
