@@ -19,6 +19,11 @@ class PresentacionFarmaco extends Model
         'cantidad',
     ];
 
+    protected $hidden = [
+        'farmaco_id',
+        'presentacion_id',
+    ];
+
     protected function cantidad(): Attribute
     {
         return Attribute::make(
@@ -30,7 +35,9 @@ class PresentacionFarmaco extends Model
     protected function fechaVencimiento(): Attribute
     {
         return Attribute::make(
-            get: fn($value) => \Carbon\Carbon::parse($value)->format('d-m-Y'),
+            //get: fn($value) => \Carbon\Carbon::parse($value)->format('d-m-Y'),
+            get: fn($value) => (int) \Carbon\Carbon::now()->diffInDays(\Carbon\Carbon::parse($value)).' días',
+            
             set: fn($value) => \Carbon\Carbon::parse($value)->toDateString(),
         );
     }

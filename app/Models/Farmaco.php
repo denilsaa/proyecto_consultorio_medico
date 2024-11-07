@@ -11,12 +11,13 @@ class Farmaco extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id',
         'nombre',
         'personal_id',
     ];
 
     protected $hidden = [
-        'id',
+        //'id',
         'created_at',
         'updated_at',
     ];
