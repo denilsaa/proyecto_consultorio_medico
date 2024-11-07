@@ -42,7 +42,8 @@ class Personal extends Model
     protected function fechaContrato(): Attribute
     {
         return Attribute::make(
-            set: fn($value) => date('m-d-y', strtotime($value)),
+            set: fn($value) => date('y-m-d', strtotime($value)),
+            //set: fn($value) => date('d-m-y', strtotime($value)),
             get: fn($value) => date('d-m-Y', strtotime($value))
         );
     }
