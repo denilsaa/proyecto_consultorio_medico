@@ -10,6 +10,7 @@ use App\Models\Triaje;
 use App\Models\Usuario;
 use App\Models\Personal;
 use App\Models\PresentacionFarmaco;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Str;
 
@@ -36,23 +37,22 @@ class HomeController extends Controller
     public function prueba()
     {
         $search = Str::lower($this->search);
-        $query = Personal::query()->with('usuario')
-            ->whereHas('usuario', function ($query) use ($search) {
-                $query->where(function ($query) use ($search) {
-                    $query->where('nombre', 'like', '%' . $search . '%')
-                        ->orWhere('carnet', 'like', '%' . $search . '%')
-                        ->orWhere('ap_paterno', 'like', '%' . $search . '%')
-                        ->orWhere('ap_materno', 'like', '%' . $search . '%');
-                })->where('estado_usuario', true);
+        $query = PresentacionFarmaco::with(['farmaco', 'presentacion'])
+            ->whereHas('farmaco', function ($query) use ($search) {
+                $query->whereRaw('LOWER(nombre) LIKE ?', ['%' . $search . '%']);
             });
 
-        if (in_array($this->sort, ['nombre', 'ap_paterno', 'ap_materno', 'carnet'])) {
-            $query->join('usuarios', 'personals.usuario_id', '=', 'usuarios.id')
-                ->orderBy('usuarios.' . $this->sort, $this->direction);
-        } else {
-            $query->orderBy('personals.' . $this->sort, $this->direction);
-        }
+        $query->orderBy($this->sort, $this->direction);
 
-        return $query->paginate(5);
+/*         return $query->get()->map(function ($presentacionFarmaco) {
+            return [
+                'nombre' => $presentacionFarmaco->farmaco->nombre,
+                'cantidad' => $presentacionFarmaco->cantidad,
+                'fecha_vencimiento' => $presentacionFarmaco->fecha_vencimiento,
+                'presentacion' => $presentacionFarmaco->presentacion->nombre
+            ];
+        }); */
+        $query = Farmaco::all();
+        return $query;
     }
 }

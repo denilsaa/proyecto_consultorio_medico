@@ -16,13 +16,14 @@ class PresentacionFarmacoSeeder extends Seeder
         $presentaciones = Presentacion::all();
 
         foreach ($farmacos as $farmaco) {
-            foreach ($presentaciones as $presentacion) {
-                DB::table('presentacion_farmaco')->insert([
-                    'farmaco_id' => $farmaco->id,
-                    'presentacion_id' => $presentacion->id,
-                    'cantidad' => rand(1, 100),
-                    'fecha_vencimiento' => now()->addDays(rand(1, 1265)),
-                ]);
+            $randomPresentaciones = $presentaciones->random(rand(1, $presentaciones->count()));
+            foreach ($randomPresentaciones as $presentacion) {
+            DB::table('presentacion_farmaco')->insert([
+                'farmaco_id' => $farmaco->id,
+                'presentacion_id' => $presentacion->id,
+                'cantidad' => rand(1, 100),
+                'fecha_vencimiento' => now()->addDays(rand(1, 1265)),
+            ]);
             }
         }
     }

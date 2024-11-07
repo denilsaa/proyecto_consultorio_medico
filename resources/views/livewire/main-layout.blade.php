@@ -1,6 +1,6 @@
 <div>
     <x-componentes.aside-home />
-    <div class="sm:ml-44 dark:bg-[#4985a8] w-auto h-screen sm:pt-24 pt-20 sm:p-10">
+    <div class="sm:ml-44 dark:bg-[#4985a8] w-auto h-auto sm:pt-24 pt-20 sm:p-10">
         <div class="w-full flex-grow rounded-xl">
 
             @switch($view)

@@ -20,6 +20,6 @@ class Dashboard extends Component
 
     public function render()
     {
-        return view('livewire.vistas.home');
+        return view('livewire.vistas.dashboard');
     }
 }

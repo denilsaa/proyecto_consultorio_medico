@@ -13,7 +13,6 @@ class Personales extends Component
 {
     use WithPagination;
 
-    public $ids = [];
     public $open = false;
     public $open_edit = false;
     public $search = '';
@@ -22,18 +21,18 @@ class Personales extends Component
     public $cant = 5;
     public $estado = true;
     public $id;
-    //public $personales;
     public $cabeceras = [
         'Nombre',
         'Carnet',
         'Telefono',
-        'fecha contrato',
-        'turno',
-        'cargo',
+        'Fecha Contrato',
+        'Turno',
+        'Cargo',
         'Estado',
         ''
     ];
-    /* campos form */
+
+    /* Campos del formulario */
     #[Validate('required|max:20|min:3|regex:/^[^\s].*$/')]
     public $nombre;
     #[Validate('required|max:20|min:3')]
@@ -77,7 +76,6 @@ class Personales extends Component
         if (in_array($sort, $validColumns) || in_array($sort, $userColumns)) {
             $this->render();
         } else {
-            // Manejar el caso de una columna no válida
             $this->sort = 'id';
             $this->direction = 'desc';
             $this->render();
@@ -109,26 +107,18 @@ class Personales extends Component
 
     public function save()
     {
-        $password = substr($this->nombre, 0, 1) . substr($this->ap_paterno, 0, 1) . substr($this->ap_materno, 0, 1) . substr($this->carnet, -4);
+        $password = $this->generatePassword();
 
         $this->newPersonal();
 
-        $this->reset([
-            'open',
-            'nombre',
-            'ap_paterno',
-            'ap_materno',
-            'correo',
-            'telefono',
-            'carnet',
-            'fecha_contrato',
-            'turno',
-            'cargo'
-        ]);
+        $this->resetForm();
 
         $this->dispatch('new_per', message: 'Personal creado con éxito', pass: $password);
+    }
 
-        //$this->render();
+    private function generatePassword()
+    {
+        return substr($this->nombre, 0, 1) . substr($this->ap_paterno, 0, 1) . substr($this->ap_materno, 0, 1) . substr($this->carnet, -4);
     }
 
     private function newPersonal()
@@ -140,7 +130,7 @@ class Personales extends Component
             'correo' => $this->correo,
             'telefono' => $this->telefono,
             'carnet' => $this->carnet,
-            'password' => bcrypt(substr($this->nombre, 0, 1) . substr($this->ap_paterno, 0, 1) . substr($this->ap_materno, 0, 1) . substr($this->carnet, -4))
+            'password' => bcrypt($this->generatePassword())
         ]);
 
         Personal::create([
@@ -178,18 +168,7 @@ class Personales extends Component
     {
         $this->editPersonal();
 
-        $this->reset([
-            'open_edit',
-            'nombre',
-            'ap_paterno',
-            'ap_materno',
-            'correo',
-            'telefono',
-            'carnet',
-            'fecha_contrato',
-            'turno',
-            'cargo'
-        ]);
+        $this->resetForm();
 
         $this->dispatch('new_per', message: 'Personal actualizado con éxito');
     }
@@ -220,7 +199,8 @@ class Personales extends Component
         $this->open = false;
     }
 
-    public function add_id($id){
+    public function add_id($id)
+    {
         if (isset($this->ids[$id]) && $this->ids[$id] === true) {
             unset($this->ids[$id]);
         } else {
@@ -228,9 +208,27 @@ class Personales extends Component
         }
     }
 
-    public function new_estado($id,$estado){
-        $this->dispatch('delete', massage: 'Personal eliminado con éxito');
-        $personal = Personal::find($id);       
-        $usuario = Usuario::find($personal->usuario_id)->update(['estado_usuario' => $estado]);
+    public function new_estado($id, $estado)
+    {
+        $this->dispatch('delete', message: 'Personal eliminado con éxito');
+        $personal = Personal::find($id);
+        Usuario::find($personal->usuario_id)->update(['estado_usuario' => $estado]);
+    }
+
+    private function resetForm()
+    {
+        $this->reset([
+            'open',
+            'open_edit',
+            'nombre',
+            'ap_paterno',
+            'ap_materno',
+            'correo',
+            'telefono',
+            'carnet',
+            'fecha_contrato',
+            'turno',
+            'cargo'
+        ]);
     }
 }
