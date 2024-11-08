@@ -189,8 +189,5 @@ class Farmacos extends Component
     {
         $this->dispatch('delete', massage: 'Farmaco eliminado con éxito');
         $farmaco = Farmaco::find($id);
-/*         $farmaco->update([
-            'estado' => $estado
-        ]); */
     }
 }
