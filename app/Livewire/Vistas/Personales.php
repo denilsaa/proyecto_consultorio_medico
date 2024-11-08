@@ -210,9 +210,17 @@ class Personales extends Component
 
     public function new_estado($id, $estado)
     {
-        $this->dispatch('delete', message: 'Personal eliminado con éxito');
         $personal = Personal::find($id);
-        Usuario::find($personal->usuario_id)->update(['estado_usuario' => $estado]);
+        $usuario = Usuario::find($personal->usuario_id);
+        
+        if ($estado) {
+            $this->dispatch(event: 'delete', message: 'Personal ' . $usuario->nombre . ' restaurado con éxito');
+        } else {
+            $this->dispatch(event: 'delete', message: 'Personal'. $usuario->nombre . 'eliminado con éxito');
+        }
+        
+        
+        $usuario->update(['estado_usuario' => $estado]);
     }
 
     private function resetForm()

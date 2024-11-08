@@ -198,9 +198,19 @@ class Pacientes extends Component
 
     public function new_estado($id, $estado)
     {
-        $this->dispatch('delete', message: 'Paciente eliminado con éxito');
+        
         $paciente = Paciente::find($id);
-        Usuario::find($paciente->usuario_id)->update(['estado_usuario' => $estado]);
+        $usuario = Usuario::find($paciente->usuario_id);
+        if($estado)
+        {
+            $this->dispatch('delete', message: 'Paciente ' . $usuario->nombre . ' restaurado con éxito');
+        }
+        else
+        {
+            $this->dispatch('delete', message: 'Paciente ' . $usuario->nombre . ' eliminado con éxito');
+        }
+
+        $usuario->update(['estado_usuario' => $estado]);
     }
 
     private function resetForm()
