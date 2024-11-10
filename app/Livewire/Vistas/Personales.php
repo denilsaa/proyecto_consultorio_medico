@@ -214,7 +214,7 @@ class Personales extends Component
         $usuario = Usuario::find($personal->usuario_id);
         
         if ($estado) {
-            $this->dispatch(event: 'delete', message: 'Personal ' . $usuario->nombre . ' restaurado con éxito');
+            $this->dispatch(event: 'restore', message: 'Personal ' . $usuario->nombre . ' restaurado con éxito');
         } else {
             $this->dispatch(event: 'delete', message: 'Personal'. $usuario->nombre . 'eliminado con éxito');
         }
