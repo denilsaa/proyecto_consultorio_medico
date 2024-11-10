@@ -105,6 +105,17 @@
                     timer: 1500
                 });
             });
+
+            Livewire.on('restore', (event) =>{
+                console.log(event);
+                Swal.fire({
+                    title: event.message,
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+
+            })
             
             
         });
