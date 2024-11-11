@@ -203,7 +203,7 @@ class Pacientes extends Component
         $usuario = Usuario::find($paciente->usuario_id);
         if($estado)
         {
-            $this->dispatch('delete', message: 'Paciente ' . $usuario->nombre . ' restaurado con éxito');
+            $this->dispatch('restore', message: 'Paciente ' . $usuario->nombre . ' restaurado con éxito');
         }
         else
         {
