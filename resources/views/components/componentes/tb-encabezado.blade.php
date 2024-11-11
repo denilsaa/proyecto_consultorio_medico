@@ -76,10 +76,9 @@
             <div class="ml-2 mr-8">
                 <!-- Modal toggle -->
                 <x-componentes.btn-new wire:click="$set('open',true)">
-                    <svg class="w-6 h-6 text-white" awidth="24"
-                            height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12h4m-2 2v-4M4 18v-1a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1Zm8-10a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                    </svg>
+                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                    </svg>                    
                 </x-componentes.btn-new>
             </div>
         </div>
