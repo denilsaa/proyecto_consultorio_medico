@@ -44,7 +44,7 @@ class HomeController extends Controller
 
         $query->orderBy($this->sort, $this->direction);
 
-/*         return $query->get()->map(function ($presentacionFarmaco) {
+        /*         return $query->get()->map(function ($presentacionFarmaco) {
             return [
                 'nombre' => $presentacionFarmaco->farmaco->nombre,
                 'cantidad' => $presentacionFarmaco->cantidad,
@@ -54,5 +54,11 @@ class HomeController extends Controller
         }); */
         $query = Farmaco::all();
         return $query;
+    }
+
+    public function showWelcome()
+    {
+        $userHasPaciente = Auth::check() ? Paciente::where('usuario_id', Auth::user()->id)->exists() : false;
+        return view('welcome', compact('userHasPaciente'));
     }
 }
