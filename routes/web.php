@@ -16,9 +16,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Framework\Constraint\Count;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', [HomeController::class, 'showWelcome'])->name('welcome');
 
 Route::get('/home', [HomeController::class])->middleware(['auth', 'verified'])->name('home');
 

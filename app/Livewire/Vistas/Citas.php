@@ -53,6 +53,7 @@ class Citas extends Component
     public function render()
     {
         $citas = $this->queryCitas();
+        dd($citas);
         $this->resetPage();
         return view('livewire.vistas.citas', [
             'citas' => $citas

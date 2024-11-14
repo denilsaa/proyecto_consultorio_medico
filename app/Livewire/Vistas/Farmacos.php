@@ -48,7 +48,8 @@ class Farmacos extends Component
         $presentaciones = Presentacion::all();
         $this->resetPage();
         return view('livewire.vistas.farmacos', [
-            'farmacos' => $farmacos, 'presentaciones' => $presentaciones
+            'farmacos' => $farmacos,
+            'presentaciones' => $presentaciones
         ]);
     }
 
@@ -82,14 +83,14 @@ class Farmacos extends Component
         $query = PresentacionFarmaco::with(['farmaco', 'presentacion'])
             ->whereHas('farmaco', function ($query) use ($search) {
                 $query->whereRaw('LOWER(nombre) LIKE ?', ['%' . $search . '%']);
-        });
+            });
 
         if (in_array($this->sort, ['cantidad', 'fecha_vencimiento',])) {
-            $query->orderBy( $this->sort, $this->direction);
-        }elseif ($this->sort == 'farmaco') {
+            $query->orderBy($this->sort, $this->direction);
+        } elseif ($this->sort == 'farmaco') {
             $query->join('farmacos', 'presentacion_farmaco.farmaco_id', '=', 'farmacos.id')
                 ->orderBy('farmacos.nombre', $this->direction);
-        }elseif ($this->sort == 'presentacion') {
+        } elseif ($this->sort == 'presentacion') {
             $query->join('presentacions', 'presentacion_farmaco.presentacion_id', '=', 'presentacions.id')
                 ->orderBy('presentacions.nombre', $this->direction);
         } else {
@@ -121,7 +122,7 @@ class Farmacos extends Component
         } else {
             $farmaco = Farmaco::create([
                 //'personal_id' => Auth::user()-> personal->first()->id,//id de personal
-                'personal_id' => Auth::user()->id,//id de usuario
+                'personal_id' => Auth::user()->id, //id de usuario
                 'nombre' => $this->nombre,
             ]);
         }
@@ -172,8 +173,8 @@ class Farmacos extends Component
             $id_farmaco = Farmaco::where('nombre', $this->nombre)->first();
         } else {
             $id_farmaco = Farmaco::create([
-            'personal_id' => Auth::user()->id,
-            'nombre' => $this->nombre,
+                'personal_id' => Auth::user()->id,
+                'nombre' => $this->nombre,
             ]);
         }
 
@@ -183,8 +184,6 @@ class Farmacos extends Component
             'fecha_vencimiento' => $this->fecha_vencimiento,
             'cantidad' => $this->cantidad,
         ]);
-
-
     }
 
     public function close()

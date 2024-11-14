@@ -1,4 +1,4 @@
-@props(['titulo','id' => null,'presentaciones'])
+@props(['titulo','id' => null,'presentaciones','pacientes'=>null])
 
 <x-componentes.form-base :titulo="$titulo">
 
@@ -11,9 +11,9 @@
             <!-- Nombre del Paciente -->
             <div class="col-span-2">
                 <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
-                <input type="text" name="name" id="name"
+                <input type="text"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                    placeholder="Denilson Asis" required="">
+                    placeholder="Denilson Asis" disabled>
             </div>
             <!-- Carnet de identidad del paciente -->
             <div class="col-span-2 sm:col-span-1">
@@ -22,6 +22,20 @@
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="12085546AE" required="">
             </div>
+            @if ($pacientes)
+            <div
+                class=" bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 overflow-y-auto overflow-x-hidden fixed top-40 right-[35rem]  left-auto z-50 justify-center items-center ">
+                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown-button">
+                    @foreach ($pacientes as $paciente )
+                    <li>
+                        <button
+                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full">{{$paciente->usuario}}</button>
+                    </li>
+                    @endforeach
+
+                </ul>
+            </div>
+            @endif
             <p class="text-lg font-semibold text-gray-900 dark:text-white mb-2 col-span-2"">
                 Datos de la cita
             </p>
