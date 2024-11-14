@@ -37,7 +37,7 @@ class Farmacos extends Component
     public $nombre;
     #[Validate('required|numeric|min:1')]
     public $cantidad;
-    #[Validate('required|date|date_format:d/m/Y')]
+    #[Validate('required|date')]
     public $fecha_vencimiento;
     #[Validate('required|max:20|min:3')]
     public $presentacion;
