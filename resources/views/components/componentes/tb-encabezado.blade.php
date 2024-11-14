@@ -1,4 +1,4 @@
-@props(['titulo', 'viewBox' => '0 0 0 0','estado'])
+@props(['titulo', 'viewBox' => '0 0 0 0','estado','estados'=> ['Activo'=>true,'Inactivo'=>false]])
 <caption
     class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
     <!-- Titulo -->
@@ -44,10 +44,11 @@
         </div>
         <div class="ml-2">
             <select
-            class="block text-sm text-gray-500 bg-white border border-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-100 font-medium rounded-lg px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:focus:ring-gray-700"
-            wire:model.live="estado">
-            <option value="true">Activos</option>
-            <option value="false">Inactivos</option>
+                class="block text-sm text-gray-500 bg-white border border-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-100 font-medium rounded-lg px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:focus:ring-gray-700"
+                wire:model.live="estado">
+                @foreach ($estados as $key => $value)
+                    <option value="{{ $value }}">{{ $key }}</option>
+                @endforeach
             </select>
         </div>
         <div class="flex">

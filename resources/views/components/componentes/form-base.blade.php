@@ -1,9 +1,9 @@
-@props(['titulo'])
+@props(['titulo','width' => 'max-w-md'])
 
 <!-- Main modal -->
 <div
     class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center h-full w-full md:inset-0  max-h-full flex bg-cyan-900 bg-opacity-50 backdrop-blur-[3px] ">
-    <div class="relative p-4 w-full max-w-md max-h-full">
+    <div class="relative p-4 w-full max-h-full {{$width}}">
         <!-- Modal content -->
         <div
             class="relative bg-white rounded-2xl shadow-[0px_0px_50px_20px] shadow-blue-700/50 dark:bg-gray-900 border-[2px] border-sky-300 px-4 pb-4">
