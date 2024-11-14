@@ -30,7 +30,10 @@
         @elseif($dato == '')
         <div class="flex space-x-2">
             <x-componentes.boton-editar :id="$fila['id']" />
+            @if (!isset($fila['farmaco']))
+                
             <x-componentes.boton-estado :estado="$estado" :id="$fila['id']" />
+            @endif
         </div>
         @else
         {{ $fila->usuario->$dato ?? $fila[$dato]['nombre'] ?? $fila[$dato]?? '' }}

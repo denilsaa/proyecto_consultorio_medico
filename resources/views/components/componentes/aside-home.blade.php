@@ -18,25 +18,13 @@
     ['view' => 'personales', 'titulo' => 'Personal'],
     ['view' => 'pacientes', 'titulo' => 'Pacientes']
     ]
-    ],
-    /* [
-    'view' => 'roles',
-    'titulo' => 'Roles',
-    'icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-rolodex" viewBox="0 0 16 16">
-        <path d="M8 9.05a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
-        <path d="M1 1a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h.5a.5.5 0 0 0 .5-.5.5.5 0 0 1 1 0 .5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5.5.5 0 0 1 1 0 .5.5 0 0 0 .5.5h.5a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H6.707L6 1.293A1 1 0 0 0 5.293 1zm0 1h4.293L6 2.707A1 1 0 0 0 6.707 3H15v10h-.085a1.5 1.5 0 0 0-2.4-.63C11.885 11.223 10.554 10 8 10c-2.555 0-3.886 1.224-4.514 2.37a1.5 1.5 0 0 0-2.4.63H1z" />
-    </svg>'
-    ], */
+    ], 
     [
-    'view' => '',
-    'titulo' => 'Inventario',
+    'view' => 'farmacos',
+    'titulo' => 'Farmaco',
     'icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-capsule" viewBox="0 0 16 16">
         <path d="M1.828 8.9 8.9 1.827a4 4 0 1 1 5.657 5.657l-7.07 7.071A4 4 0 1 1 1.827 8.9Zm9.128.771 2.893-2.893a3 3 0 1 0-4.243-4.242L6.713 5.429z" />
     </svg>',
-    'subitems' => [
-    ['view' => 'farmacos', 'titulo' => 'Farmaco'],
-    ['view' => 'presentaciones', 'titulo' => 'Presentacion']
-    ]
     ],
     [
     'view' => 'citas',

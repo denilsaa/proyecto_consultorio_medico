@@ -20,17 +20,11 @@ return new class extends Migration
                 ->constrained()
                 ->onDelete('cascade')
                 ->nullable();
-            /* $table->foreignId('receipt_id')
-                ->constrained()
-                ->onDelete('cascade')
-                ->nullable(); */
-            /* $table->foreignId('historial_id')
-                ->constrained()
-                ->onDelete('cascade'); */
             $table->date('fecha');
             $table->time('hora', precision: 0);
             $table->text('motivo');
             $table->boolean('confirmada')->default(true);
+            $table->integer('estado')->default(0);
             $table->timestamps();
         });
     }

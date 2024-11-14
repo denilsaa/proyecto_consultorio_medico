@@ -120,8 +120,8 @@ class Farmacos extends Component
             $farmaco = Farmaco::where('nombre', $this->nombre)->first();
         } else {
             $farmaco = Farmaco::create([
-                'personal_id' => Auth::user()-> personal->first()->id,//idi de personal
-                //'personal_id' => Auth::user()->id;,//id de usuario
+                //'personal_id' => Auth::user()-> personal->first()->id,//id de personal
+                'personal_id' => Auth::user()->id,//id de usuario
                 'nombre' => $this->nombre,
             ]);
         }
@@ -168,9 +168,17 @@ class Farmacos extends Component
     private function editFarmaco()
     {
         $farmaco = PresentacionFarmaco::find($this->id);
+        if (Farmaco::where('nombre', $this->nombre)->exists()) {
+            $id_farmaco = Farmaco::where('nombre', $this->nombre)->first();
+        } else {
+            $id_farmaco = Farmaco::create([
+            'personal_id' => Auth::user()->id,
+            'nombre' => $this->nombre,
+            ]);
+        }
 
         $farmaco->update([
-            'farmaco_id' => $this->nombre,
+            'farmaco_id' => $id_farmaco->id,
             'presentacion_id' => $this->presentacion,
             'fecha_vencimiento' => $this->fecha_vencimiento,
             'cantidad' => $this->cantidad,

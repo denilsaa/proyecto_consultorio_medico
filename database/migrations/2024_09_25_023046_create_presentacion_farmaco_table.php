@@ -21,6 +21,7 @@ return new class extends Migration
                 ->onDelete('cascade');
             $table->integer('cantidad');
             $table->date('fecha_vencimiento');
+            $table->boolean('estado')->default(true);
             $table->timestamps();
         });
     }
