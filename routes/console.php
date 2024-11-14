@@ -11,6 +11,6 @@ Artisan::command('hola', function () {
     $this->info('Hola, este es un comando de prueba.');
 })->purpose('Descripción del comando Hola')->daily();
 
-Artisan::command('actualizar-farmacos', function ($nombre) {
+Artisan::command('actualizar-farmacos', function () {
     $this->info('Estado de los fármacos actualizado correctamente.');
 })->purpose('Actuliza el estado de los farmacos ')->daily();
