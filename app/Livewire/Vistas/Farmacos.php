@@ -21,7 +21,7 @@ class Farmacos extends Component
     public $sort = 'id';
     public $direction = 'desc';
     public $cant = 5;
-    public $estado = false;
+    public $estado = true;
     public $id;
     //public $farmacos;
     public $cabeceras = [
@@ -83,9 +83,13 @@ class Farmacos extends Component
         $query = PresentacionFarmaco::with(['farmaco', 'presentacion'])
             ->whereHas('farmaco', function ($query) use ($search) {
                 $query->whereRaw('LOWER(nombre) LIKE ?', ['%' . $search . '%']);
+            })
+            ->whereHas('presentacion', function ($query) {
+                // Filtra por el estado de la presentación
+                $query->where('estado', $this->estado); 
             });
 
-        if (in_array($this->sort, ['cantidad', 'fecha_vencimiento',])) {
+        if (in_array($this->sort, ['cantidad', 'fecha_vencimiento'])) {
             $query->orderBy($this->sort, $this->direction);
         } elseif ($this->sort == 'farmaco') {
             $query->join('farmacos', 'presentacion_farmaco.farmaco_id', '=', 'farmacos.id')
@@ -99,6 +103,7 @@ class Farmacos extends Component
 
         return $query->paginate($this->cant);
     }
+
 
     public function save()
     {
