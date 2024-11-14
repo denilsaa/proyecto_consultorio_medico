@@ -38,7 +38,7 @@ class PresentacionFarmaco extends Model
             get: fn($value) => \Carbon\Carbon::parse($value)->format('d-m-Y'),
             //get: fn($value) => (int) \Carbon\Carbon::now()->diffInDays(\Carbon\Carbon::parse($value)).' días',
             
-            set: fn($value) => \Carbon\Carbon::parse($value)->toDateString(),
+            set: fn($value) => \Carbon\Carbon::parse($value)->format('Y-m-d'),
         );
     }
 
