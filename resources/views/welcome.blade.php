@@ -66,6 +66,9 @@
                                         </a>
                                     </li>
                                     <li>
+                                        @livewire('show-citas')
+                                    </li>
+                                    <li>
 
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf
@@ -87,6 +90,9 @@
                             </div>
                         </div>
                     </div>
+
+
+
                     @endif
                     @endauth
                 </nav>
@@ -112,6 +118,7 @@
 
                 @if ($userHasPaciente)
                 @livewire('new-cita')
+
                 @else
 
                 <a href="{{ url('/home') }}"
