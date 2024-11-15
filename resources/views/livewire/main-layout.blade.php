@@ -36,6 +36,10 @@
             @livewire('vistas.recetas')
             @break
 
+            @case('agenda')
+            @livewire('vistas.agenda')
+            @break
+
             @default
             <p>Vista no encontrada</p>
             @endswitch
