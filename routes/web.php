@@ -12,6 +12,7 @@ use App\Http\Controllers\PresentacionController;
 use App\Http\Controllers\ReciboController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\CheckPersonal;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Framework\Constraint\Count;
@@ -33,7 +34,7 @@ Route::get('/prueba', [HomeController::class, 'prueba']);
 
 //Route::get('/', [PersonalController::class, 'index']);
 
-Route::get('/home', HomeController::class)->name('home')->middleware('auth', 'verified');
+Route::get('/home', HomeController::class)->name('home')->middleware('auth', 'verified', 'personal');
 
 Route::resource('personal', PersonalController::class)->middleware('auth');
 
