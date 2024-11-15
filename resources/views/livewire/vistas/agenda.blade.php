@@ -60,7 +60,7 @@
                             <h3 class="font-semibold text-sm text-blue-600">Motivo</h3>
                             <p>{{ $cita->motivo }} - {{ $cita->hora }}</p>
                             <h3 class="font-semibold text-sm text-blue-600 mt-2">Paciente</h3>
-                            <p>{{ $cita->paciente->nombre }}</p>
+                            <p>{{ $cita->paciente->usuario->nombre }}</p>
                         </div>
                     @endforeach
                 </div>
