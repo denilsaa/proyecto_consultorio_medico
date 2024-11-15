@@ -31,11 +31,8 @@ class AuthenticatedSessionController extends Controller
 
         if (Personal::where('usuario_id', $user->id)->exists()) {
             return redirect()->intended(route('home'));
-        } elseif (Paciente::where('usuario_id', $user->id)->exists()) {
-            return redirect()->intended(route('welcome'));
         }
 
-        // NOTA HENRRY: El error al iniciar sesión es porque no se estaba retornando fuera del condicional
         return redirect()->intended(route('welcome'));
     }
 

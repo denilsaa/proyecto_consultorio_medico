@@ -12,11 +12,11 @@ class NewCita extends Component
     public $open = false;
 
     #[Validate('required|max:20|min:3|regex:/^[^\s].*$/')]
-    public $motivo = '';
+    public $motivo;
     #[Validate('required|date')]
-    public $fecha = '';
+    public $fecha;
     #[Validate('required')]
-    public $hora = '';
+    public $hora;
 
     public function render()
     {
@@ -30,11 +30,12 @@ class NewCita extends Component
     public function save()
     {
         $user = Auth::user()->pacientes->first();
-        Cita::create([
-            'paciente_id' => $user->id,
-            'fecha' => $this->fecha,
-            'motivo' => $this->motivo,
-            'hora' => $this->hora,
-        ]);
+
+        $cita = new Cita();
+        $cita->paciente_id = $user->id;
+        $cita->fecha = date('d-m-y', strtotime($this->fecha));
+        $cita->hora = date('H:i:s', strtotime($this->hora));
+        $cita->motivo = $this->motivo;
+        $cita->save();
     }
 }

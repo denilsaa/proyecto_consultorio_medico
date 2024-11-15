@@ -16,7 +16,7 @@
                 </button>
                 <a href="{{route('home')}}" class="flex ms-2 md:me-24">
                     <x-application-logo
-                        class=" w-24 h-auto fill-current text-gray-500 dark:drop-shadow-[1px_1px_10px_rgba(0,0,0,1)] drop-shadow-[-0.8px_-1px_0_rgba(255,255,255,0.4)]" />
+                        class=" w-24 h-auto fill-current text-gray-500 dark:drop-shadow-[1px_1px_10px_rgba(0,0,0,1)] drop-shadow-[-0.8px_-1px_5px_#224D82]" />
                 </a>
             </div>
 

@@ -45,7 +45,7 @@ class Personales extends Component
     public $telefono;
     #[Validate('required|max:10|min:7|unique:usuarios')]
     public $carnet;
-    #[Validate('required|date')]
+    #[Validate('required|date_format:d-m-y')]
     public $fecha_contrato;
     #[Validate('required|in:Mañana,Tarde,Noche')]
     public $turno;
@@ -133,6 +133,9 @@ class Personales extends Component
             'password' => bcrypt($this->generatePassword())
         ]);
 
+        // Formatear la fecha antes de guardarla
+        $fecha_contrato = date('Y-m-d', strtotime($this->fecha_contrato));
+
         Personal::create([
             'usuario_id' => $usuario->id,
             'fecha_contrato' => $this->fecha_contrato,
@@ -212,14 +215,15 @@ class Personales extends Component
     {
         $personal = Personal::find($id);
         $usuario = Usuario::find($personal->usuario_id);
-        
+
         if ($estado) {
             $this->dispatch(event: 'restore', message: 'Personal ' . $usuario->nombre . ' restaurado con éxito');
         } else {
-            $this->dispatch(event: 'delete', message: 'Personal '. $usuario->nombre . ' eliminado con éxito');
+
+            $this->dispatch(event: 'delete', message: 'Personal' . $usuario->nombre . 'eliminado con éxito');
         }
-        
-        
+
+
         $usuario->update(['estado_usuario' => $estado]);
     }
 

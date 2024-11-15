@@ -42,9 +42,8 @@ class Personal extends Model
     protected function fechaContrato(): Attribute
     {
         return Attribute::make(
-            set: fn($value) => date('y-m-d', strtotime($value)),
-            //set: fn($value) => date('d-m-y', strtotime($value)),
-            get: fn($value) => date('d-m-Y', strtotime($value))
+            set: fn($value) => \Carbon\Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d'),
+            get: fn($value) => \Carbon\Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y')
         );
     }
 
