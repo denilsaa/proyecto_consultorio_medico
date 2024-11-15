@@ -17,9 +17,10 @@ return new class extends Migration
                 ->constrained()
                 ->onDelete('cascade');
             $table->foreignId('personal_id')
+                ->nullable()
                 ->constrained()
                 ->onDelete('cascade')
-                ->nullable();
+                ->default(null);
             $table->date('fecha');
             $table->time('hora', precision: 0);
             $table->text('motivo');

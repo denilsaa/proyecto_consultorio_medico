@@ -35,10 +35,8 @@ class PresentacionFarmaco extends Model
     protected function fechaVencimiento(): Attribute
     {
         return Attribute::make(
-            get: fn($value) => \Carbon\Carbon::parse($value)->format('d-m-Y'),
-            //get: fn($value) => (int) \Carbon\Carbon::now()->diffInDays(\Carbon\Carbon::parse($value)).' días',
-            
-            set: fn($value) => \Carbon\Carbon::parse($value)->format('Y-m-d'),
+            set: fn($value) => \Carbon\Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d'),
+            get: fn($value) => \Carbon\Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y')
         );
     }
 

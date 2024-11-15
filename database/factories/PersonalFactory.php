@@ -17,7 +17,7 @@ class PersonalFactory extends Factory
     public function definition(): array
     {
         return [
-            'fecha_contrato' => $this->faker->date('m-d-y'),
+            'fecha_contrato' => $this->faker->dateTimeInInterval('-1 years', '+3 months')->format('d/m/Y'),
             'turno' => $this->faker->randomElement(['mañana', 'tarde', 'noche']),
             'cargo' => $this->faker->randomElement(['medico', 'enfermero', 'administrativo']),
             'usuario_id' => $this->faker->unique()->numberBetween(1, 6),
