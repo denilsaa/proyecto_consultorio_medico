@@ -21,7 +21,7 @@ class ReciboFactory extends Factory
         return [
             'descripcion' => $this->faker->sentence(),
             'monto' => $this->faker->randomFloat(2, 0, 1000),
-            'fecha' => $this->faker->dateTimeBetween('-1 year', 'now')->format('d-m-Y'),
+            'fecha' => $this->faker->dateTimeBetween('-1 year', 'now')->format('d/m/Y'),
             'metodo_pago' => $this->faker->randomElement(['Efectivo', 'Tarjeta', 'Transferencia']),
             'cita_id' => self::$citaId++,
         ];

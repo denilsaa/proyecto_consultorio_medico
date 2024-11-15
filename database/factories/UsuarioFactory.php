@@ -22,7 +22,7 @@ class UsuarioFactory extends Factory
             'correo' => fake()->unique()->safeEmail(),
             'correo_verified_at' => now(),
             'telefono' => fake()->randomNumber(8),
-            'carnet' => fake()->unique()->randomNumber(8),
+            'carnet' => fake()->unique()->numberBetween(10000000, 99999999),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
         ];

@@ -42,8 +42,8 @@ class Cita extends Model
     protected function fecha(): Attribute
     {
         return Attribute::make(
-            get: fn($value) => \Carbon\Carbon::parse($value)->format('d-m-Y'),
-            set: fn($value) => \Carbon\Carbon::createFromFormat('d-m-Y', (string) $value)->toDateString(),
+            set: fn($value) => \Carbon\Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d'),
+            get: fn($value) => \Carbon\Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y')
         );
     }
 

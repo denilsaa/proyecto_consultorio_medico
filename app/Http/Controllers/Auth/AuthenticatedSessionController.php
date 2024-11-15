@@ -31,9 +31,8 @@ class AuthenticatedSessionController extends Controller
 
         if (Personal::where('usuario_id', $user->id)->exists()) {
             return redirect()->intended(route('home'));
-        } elseif (Paciente::where('usuario_id', $user->id)->exists()) {
-            return redirect()->intended(route('welcome'));
         }
+        return redirect()->intended(route('welcome'));
     }
 
     public function destroy(Request $request): RedirectResponse
