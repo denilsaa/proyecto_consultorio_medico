@@ -219,6 +219,7 @@ class Personales extends Component
         if ($estado) {
             $this->dispatch(event: 'restore', message: 'Personal ' . $usuario->nombre . ' restaurado con éxito');
         } else {
+
             $this->dispatch(event: 'delete', message: 'Personal' . $usuario->nombre . 'eliminado con éxito');
         }
 

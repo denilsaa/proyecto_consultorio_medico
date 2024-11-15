@@ -32,6 +32,7 @@ class AuthenticatedSessionController extends Controller
         if (Personal::where('usuario_id', $user->id)->exists()) {
             return redirect()->intended(route('home'));
         }
+
         return redirect()->intended(route('welcome'));
     }
 

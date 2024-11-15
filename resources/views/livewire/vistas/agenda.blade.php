@@ -7,11 +7,10 @@
             <span class="ml-2">Agenda - {{ ucfirst(\Carbon\Carbon::create($anio, $mes)->locale('es')->translatedFormat('F Y')) }}</span>
         </div>
     </h1>
-    
-    
+
     <!-- Filtros para cambiar el mes y año -->
     <div class="flex justify-center space-x-4 mb-4">
-        <select wire:model="mes" wire:change="actualizarMes($event.target.value, {{ $anio }})" class="p-2 border    rounded">
+        <select wire:model="mes" wire:change="actualizarMes($event.target.value, {{ $anio }})" class="p-2 border rounded">
             @foreach(range(1, 12) as $m)
                 <option value="{{ $m }}" @if($m == $mes) selected @endif>
                     {{ \Carbon\Carbon::create()->month($m)->locale('es')->isoFormat('MMMM') }}
@@ -19,15 +18,12 @@
             @endforeach
         </select>
         
-        <select wire:model="anio" wire:change="actualizarMes({{ $mes }}, $event.target.value)" class="p-2 border    rounded">
+        <select wire:model="anio" wire:change="actualizarMes({{ $mes }}, $event.target.value)" class="p-2 border rounded">
             @foreach(range(now()->year - 1, now()->year) as $año)
                 <option value="{{ $año }}" @if($año == $anio) selected @endif>{{ $año }}</option>
             @endforeach
         </select>
     </div>
-
-
-
 
     <!-- Mostrar el calendario -->
     <div class="grid grid-cols-7 gap-2 px-4 sm:px-6 md:px-8 lg:px-10">
@@ -64,7 +60,7 @@
                             <h3 class="font-semibold text-sm text-blue-600">Motivo</h3>
                             <p>{{ $cita->motivo }} - {{ $cita->hora }}</p>
                             <h3 class="font-semibold text-sm text-blue-600 mt-2">Paciente</h3>
-                            <p class="text-sm font-medium text-gray-900">{{ $cita->paciente->usuario->nombre }}</p> <!-- Nombre del paciente -->
+                            <p>{{ $cita->paciente->nombre }}</p>
                         </div>
                     @endforeach
                 </div>

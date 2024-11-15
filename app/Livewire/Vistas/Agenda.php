@@ -10,7 +10,6 @@ class Agenda extends Component
     public $mes;
     public $anio;
 
-    // Constructor para establecer valores predeterminados si no se pasan
     public function mount($mes = null, $anio = null)
     {
         $this->mes = $mes ?? now()->month;  // Mes actual si no se pasa
@@ -34,9 +33,16 @@ class Agenda extends Component
         // Formatear las citas para el calendario
         $citasPorDia = [];
         foreach ($citas as $cita) {
-            $fecha = Carbon::parse($cita->fecha);
-            $citasPorDia[$fecha->day] = $citasPorDia[$fecha->day] ?? [];
-            $citasPorDia[$fecha->day][] = $cita;
+            // Asegurarse de que la fecha se esté manejando correctamente
+            try {
+                // Aquí tratamos la fecha como d/m/Y
+                $fecha = Carbon::createFromFormat('d/m/Y', $cita->fecha);
+                $citasPorDia[$fecha->day] = $citasPorDia[$fecha->day] ?? [];
+                $citasPorDia[$fecha->day][] = $cita;
+            } catch (\Exception $e) {
+                // Si hay un error al convertir la fecha, mostrarlo para diagnóstico
+                dd('Error al convertir fecha:', $cita->fecha, $e->getMessage());
+            }
         }
 
         return view('livewire.vistas.agenda', [
