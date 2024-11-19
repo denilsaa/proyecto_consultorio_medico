@@ -27,75 +27,72 @@
             </a>
             <div class="flex items-center md:order-2 space-x-1 md:space-x-2 rtl:space-x-reverse">
                 @if (Route::has('login'))
-                <nav class="-mx-3 flex flex-1 justify-end">
-                    @auth
+                    <nav class="-mx-3 flex flex-1 justify-end">
+                        @auth
 
-                    @if ($userHasPaciente)
-                    <div class="flex items-center">
-                        <div class="flex items-center ms-3">
-                            <div>
-                                <button type="button"
-                                    class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-                                    aria-expanded="false" data-dropdown-toggle="dropdown-user">
-                                    <span class="sr-only">Open user menu</span>
-                                    <img class="w-8 h-8 rounded-full"
-                                        src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                                        alt="user photo">
-                                </button>
-                            </div>
-                            <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
-                                id="dropdown-user">
-                                <div class="px-4 py-3" role="none">
-                                    <p class="text-sm text-gray-900 dark:text-white" role="none">
-                                        {{ Auth::user()->nombre }}
+                            @if ($userHasPaciente)
+                                <div class="flex items-center">
+                                    <div class="flex items-center ms-3">
+                                        <div>
+                                            <button type="button"
+                                                class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                                                aria-expanded="false" data-dropdown-toggle="dropdown-user">
+                                                <span class="sr-only">Open user menu</span>
+                                                <img class="w-8 h-8 rounded-full"
+                                                    src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                                                    alt="user photo">
+                                            </button>
+                                        </div>
+                                        <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
+                                            id="dropdown-user">
+                                            <div class="px-4 py-3" role="none">
+                                                <p class="text-sm text-gray-900 dark:text-white" role="none">
+                                                    {{ Auth::user()->nombre }}
 
-                                        {{ Auth::user()->ap_paterno }}
-                                        {{ Auth::user()->ap_materno }}
-                                    </p>
-                                    <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300"
-                                        role="none">
-                                        {{ Auth::user()->correo }}
-                                    </p>
-                                </div>
-                                <ul class="py-1" role="none">
-                                    <li>
-                                        <a href="{{route('profile.edit')}}"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                            role="menuitem">
-                                            {{__('Profile')}}
-                                        </a>
-                                    </li>
-                                    <li>
-                                        @livewire('show-citas')
-                                    </li>
-                                    <li>
+                                                    {{ Auth::user()->ap_paterno }}
+                                                    {{ Auth::user()->ap_materno }}
+                                                </p>
+                                                <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300"
+                                                    role="none">
+                                                    {{ Auth::user()->correo }}
+                                                </p>
+                                            </div>
+                                            <ul class="py-1" role="none">
+                                                <li>
+                                                    <a href="{{ route('profile.edit') }}"
+                                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                        role="menuitem">
+                                                        {{ __('Profile') }}
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    @livewire('show-citas')
+                                                </li>
+                                                <li>
 
-                                        <form method="POST" action="{{ route('logout') }}">
-                                            @csrf
+                                                    <form method="POST" action="{{ route('logout') }}">
+                                                        @csrf
 
-                                            <a href="route('logout')"
-                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                                role="menuitem"
-                                                onclick="event.preventDefault();
+                                                        <a href="route('logout')"
+                                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                            role="menuitem"
+                                                            onclick="event.preventDefault();
                                                                                         this.closest('form').submit();">
 
 
 
-                                                {{ __('Log Out') }}
-                                            </a>
-                                        </form>
+                                                            {{ __('Log Out') }}
+                                                        </a>
+                                                    </form>
 
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    @endif
-                    @endauth
-                </nav>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        @endauth
+                    </nav>
                 @endif
             </div>
         </div>
@@ -114,33 +111,30 @@
                 mejor.</p>
             <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
                 @if (Route::has('login'))
-                @auth
+                    @auth
 
-                @if ($userHasPaciente)
-                @livewire('new-cita')
-
-                @else
-
-                <a href="{{ url('/home') }}"
-                    class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg
+                        @if ($userHasPaciente)
+                            @livewire('new-cita')
+                        @else
+                            <a href="{{ url('/home') }}"
+                                class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg
             bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900 drop-shadow-[2px_1px_5px_rgba(0,0,0,0.78)]">
-                    Dashboard
-                </a>
-                @endif
-
-                @else
-                <a href="{{ route('login') }}"
-                    class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
-                    {{ __('Login') }}
-                </a>
-                @if (Route::has('register'))
-                <a href="{{ route('register') }}"
-                    class=" ml-4 inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg
+                                Dashboard
+                            </a>
+                        @endif
+                    @else
+                        <a href="{{ route('login') }}"
+                            class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
+                            {{ __('Login') }}
+                        </a>
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}"
+                                class=" ml-4 inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg
             bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900 drop-shadow-[2px_1px_5px_rgba(0,0,0,0.78)]">
-                    {{ __('Register') }}
-                </a>
-                @endif
-                @endauth
+                                {{ __('Register') }}
+                            </a>
+                        @endif
+                    @endauth
                 @endif
             </div>
         </div>
@@ -273,8 +267,8 @@
                         class="bg-purple-100 text-purple-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-purple-400 mb-2">
                         <svg class="w-2.5 h-2.5 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 20 16">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M5 4 1 8l4 4m10-8 4 4-4 4M11 1 9 15" />
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="M5 4 1 8l4 4m10-8 4 4-4 4M11 1 9 15" />
                         </svg>
                         Horarios
                     </a>
@@ -292,8 +286,8 @@
 
     <footer class="bg-white rounded-lg shadow m-4 dark:bg-gray-800">
         <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="https://flowbite.com/"
-                    class="hover:underline">InnovaTech™</a>. All Rights Reserved.
+            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a
+                    href="https://flowbite.com/" class="hover:underline">InnovaTech™</a>. All Rights Reserved.
             </span>
             <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
                 <li>
@@ -311,8 +305,6 @@
             </ul>
         </div>
     </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
 </body>
 
 </html>

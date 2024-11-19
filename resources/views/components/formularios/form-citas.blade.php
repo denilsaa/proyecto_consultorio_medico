@@ -1,106 +1,148 @@
-@props(['titulo','id' => null,'presentaciones','pacientes'=>null])
+@props(['titulo', 'id' => null, 'presentaciones', 'pacientes' => null])
 
-<x-componentes.form-base :titulo="$titulo">
+<x-componentes.form-base :titulo="$titulo" width="max-w-2xl">
 
-    <div class="mb-4 ">
-        <!-- datos paciente -->
-        <div class="col-span-2 sm:col-span-1 grid gap-4 mb-4 grid-cols-2">
-            <p class="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                Datos del Paciente
-            </p>
-            <!-- Nombre del Paciente -->
-            <div class="col-span-2">
-                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
-                <input type="text"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                    placeholder="Denilson Asis" disabled>
-            </div>
-            <!-- Carnet de identidad del paciente -->
-            <div class="col-span-2 sm:col-span-1">
-                <label for="carnet" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">CI</label>
-                <input type="text" name="carnet" id="carnet"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                    placeholder="12085546AE" required="">
-            </div>
-            @if ($pacientes)
-            <div
-                class=" bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 overflow-y-auto overflow-x-hidden fixed top-40 right-[35rem]  left-auto z-50 justify-center items-center ">
-                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown-button">
-                    @foreach ($pacientes as $paciente )
-                    <li>
-                        <button
-                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full">{{$paciente->usuario}}</button>
-                    </li>
-                    @endforeach
-
-                </ul>
-            </div>
-            @endif
-            <p class="text-lg font-semibold text-gray-900 dark:text-white mb-2 col-span-2"">
-                Datos de la cita
-            </p>
-
-
-            <!-- Fecha de la cita -->
-        <div class=" col-span-2 sm:col-span-1">
-                <label for="turno" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha de la
-                    Cita</label>
-            <div class="relative max-w-sm">
-                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                    </svg>
-                </div>
-                <input type="date"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="dd/mm/yyyy">
-            </div>
+    <h2 class="text-xl text-gray-900 dark:text-white font-bold mb-2">Digital Transformation</h2>
+    <div class="flex items-center space-x-4 rtl:space-x-reverse mb-3">
+        <div class="flex items-center">
+            <svg class="w-5 h-5 text-gray-400 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd"
+                    d="M5 5a1 1 0 0 0 1-1 1 1 0 1 1 2 0 1 1 0 0 0 1 1h1a1 1 0 0 0 1-1 1 1 0 1 1 2 0 1 1 0 0 0 1 1h1a1 1 0 0 0 1-1 1 1 0 1 1 2 0 1 1 0 0 0 1 1 2 2 0 0 1 2 2v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a2 2 0 0 1 2-2ZM3 19v-7a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Zm6.01-6a1 1 0 1 0-2 0 1 1 0 0 0 2 0Zm2 0a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm6 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0Zm-10 4a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm6 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0Zm2 0a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z"
+                    clip-rule="evenodd" />
+            </svg>
+            <span class="text-gray-900 dark:text-white text-base font-medium">30.06.2024</span>
         </div>
-
-        <!-- Hora de la cita -->
-        <div class="col-span-2 sm:col-span-1">
-            <label for="time" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Hora de la
-                Cita:</label>
-            <div class="flex">
-                <input type="time" id="time"
-                    class="rounded-none rounded-s-lg bg-gray-50 border text-gray-900 leading-none focus:ring-blue-500 focus:border-blue-500 block flex-1 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    min="09:00" max="18:00" value="00:00" required>
-                <span
-                    class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-s-0 border-s-0 border-gray-300 rounded-e-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
-                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                        <path fill-rule="evenodd"
-                            d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4a1 1 0 1 0-2 0v4a1 1 0 0 0 .293.707l3 3a1 1 0 0 0 1.414-1.414L13 11.586V8Z"
-                            clip-rule="evenodd" />
-                    </svg>
-                </span>
-            </div>
-        </div>
-
-        <!-- motivo -->
-        <div class="col-span-2">
-            <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Motivo de la
-                consulta </label>
-            <textarea id="message" rows="6"
-                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Describe los Motivos de la consulta ...."></textarea>
+        <div class="flex items-center">
+            <svg class="w-5 h-5 text-gray-400 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd"
+                    d="M11.906 1.994a8.002 8.002 0 0 1 8.09 8.421 7.996 7.996 0 0 1-1.297 3.957.996.996 0 0 1-.133.204l-.108.129c-.178.243-.37.477-.573.699l-5.112 6.224a1 1 0 0 1-1.545 0L5.982 15.26l-.002-.002a18.146 18.146 0 0 1-.309-.38l-.133-.163a.999.999 0 0 1-.13-.202 7.995 7.995 0 0 1 6.498-12.518ZM15 9.997a3 3 0 1 1-5.999 0 3 3 0 0 1 5.999 0Z"
+                    clip-rule="evenodd" />
+            </svg>
+            <span class="text-gray-900 dark:text-white text-base font-medium">California, USA</span>
         </div>
     </div>
-    @if($id)
-    <button type="button" wire:click="update"
-        class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-1.5 text-center me-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-500 dark:focus:ring-green-800">
-        Guardar Cambios
-    </button>
+    <div class="flex items-start space-x-4 rtl:space-x-reverse mb-5">
+        <div>
+            <div class="text-base font-normal text-gray-500 dark:text-gray-400 mb-2">Participants</div>
+        </div>
+        <div>
+            <div class="text-base font-normal text-gray-500 dark:text-gray-400 mb-3">Duration</div>
+            <span class="text-gray-900 dark:text-white text-base font-medium block">30 min</span>
+        </div>
+        <div>
+            <div class="text-base font-normal text-gray-500 dark:text-gray-400 mb-3">Meeting Type</div>
+            <span class="text-gray-900 dark:text-white text-base font-medium block">Web conference</span>
+        </div>
+    </div>
+    <div
+        class="pt-5 border-t border-gray-200 dark:border-gray-800 flex sm:flex-row flex-col sm:space-x-5 rtl:space-x-reverse">
 
-    @else
-    <button type="button" wire:click="save"
-        class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-1.5 text-center me-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-500 dark:focus:ring-green-800">
-        Agregar
-    </button>
-
-    @endif
-
-
+    </div>
+    <div class="sm:ms-7 sm:ps-5 sm:border-s border-gray-200 dark:border-gray-800 w-full sm:max-w-[15rem] mt-5 sm:mt-0">
+        <h3 class="text-gray-900 dark:text-white text-base font-medium mb-3 text-center">Wednesday 30 June 2024</h3>
+        <button type="button" data-collapse-toggle="timetable"
+            class="inline-flex items-center w-full py-2 px-5 me-2 justify-center text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+            <svg class="w-4 h-4 text-gray-800 dark:text-white me-2" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                viewBox="0 0 24 24">
+                <path fill-rule="evenodd"
+                    d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4a1 1 0 1 0-2 0v4a1 1 0 0 0 .293.707l3 3a1 1 0 0 0 1.414-1.414L13 11.586V8Z"
+                    clip-rule="evenodd" />
+            </svg>
+            Pick a time
+        </button>
+        <label class="sr-only">
+            Pick a time
+        </label>
+        <ul id="timetable" class="grid w-full grid-cols-2 gap-2 mt-5">
+            <li>
+                <input type="radio" id="10-am" value="" class="hidden peer" name="timetable">
+                <label for="10-am"
+                    class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
+                    10:00 AM
+                </label>
+            </li>
+            <li>
+                <input type="radio" id="10-30-am" value="" class="hidden peer" name="timetable">
+                <label for="10-30-am"
+                    class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
+                    10:30 AM
+                </label>
+            </li>
+            <li>
+                <input type="radio" id="11-am" value="" class="hidden peer" name="timetable">
+                <label for="11-am"
+                    class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
+                    11:00 AM
+                </label>
+            </li>
+            <li>
+                <input type="radio" id="11-30-am" value="" class="hidden peer" name="timetable">
+                <label for="11-30-am"
+                    class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
+                    11:30 AM
+                </label>
+            </li>
+            <li>
+                <input type="radio" id="12-am" value="" class="hidden peer" name="timetable" checked>
+                <label for="12-am"
+                    class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
+                    12:00 AM
+                </label>
+            </li>
+            <li>
+                <input type="radio" id="12-30-pm" value="" class="hidden peer" name="timetable">
+                <label for="12-30-pm"
+                    class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
+                    12:30 PM
+                </label>
+            </li>
+            <li>
+                <input type="radio" id="1-pm" value="" class="hidden peer" name="timetable">
+                <label for="1-pm"
+                    class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
+                    01:00 PM
+                </label>
+            </li>
+            <li>
+                <input type="radio" id="1-30-pm" value="" class="hidden peer" name="timetable">
+                <label for="1-30-pm"
+                    class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
+                    01:30 PM
+                </label>
+            </li>
+            <li>
+                <input type="radio" id="2-pm" value="" class="hidden peer" name="timetable">
+                <label for="2-pm"
+                    class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
+                    02:00 PM
+                </label>
+            </li>
+            <li>
+                <input type="radio" id="2-30-pm" value="" class="hidden peer" name="timetable">
+                <label for="2-30-pm"
+                    class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
+                    02:30 PM
+                </label>
+            </li>
+            <li>
+                <input type="radio" id="3-pm" value="" class="hidden peer" name="timetable">
+                <label for="3-pm"
+                    class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
+                    03:00 PM
+                </label>
+            </li>
+            <li>
+                <input type="radio" id="3-30-pm" value="" class="hidden peer" name="timetable">
+                <label for="3-30-pm"
+                    class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
+                    03:30 PM
+                </label>
+            </li>
+        </ul>
+    </div>
+    </div>
+    @livewire('form.citas')
 </x-componentes.form-base>

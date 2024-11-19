@@ -9,7 +9,10 @@ use Livewire\Attributes\Validate;
 
 class NewCita extends Component
 {
-    public $open = false;
+    public $open = true;
+    public $horarios = ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'];
+
+
 
     #[Validate('required|max:20|min:3|regex:/^[^\s].*$/')]
     public $motivo;
@@ -27,6 +30,7 @@ class NewCita extends Component
     {
         $this->open = false;
     }
+
     public function save()
     {
         $user = Auth::user()->pacientes->first();
@@ -37,5 +41,10 @@ class NewCita extends Component
         $cita->hora = date('H:i:s', strtotime($this->hora));
         $cita->motivo = $this->motivo;
         $cita->save();
+    }
+
+    public function openModal()
+    {
+        $this->open = true;
     }
 }
