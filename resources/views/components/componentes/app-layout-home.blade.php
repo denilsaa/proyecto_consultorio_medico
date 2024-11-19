@@ -1,6 +1,6 @@
 @props(['titulo'])
 @php
-$titulo = $titulo ?? 'Sin Titulo';
+    $titulo = $titulo ?? 'Sin Titulo';
 @endphp
 
 <!DOCTYPE html>
@@ -9,7 +9,7 @@ $titulo = $titulo ?? 'Sin Titulo';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{$titulo}}</title>
+    <title>{{ $titulo }}</title>
     <meta name="author" content="David Grzyb">
     <meta name="description" content="">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -54,20 +54,17 @@ $titulo = $titulo ?? 'Sin Titulo';
 
 <body class="" id="dark-mode">
 
-    <x-componentes.nav-home/>
+    <x-componentes.nav-home />
 
     @livewire('main-layout')
-{{-- 
-    <x-componentes.aside-home/> --}}
+    {{--
+    <x-componentes.aside-home /> --}}
     @php
-    $slot = 'Hola';
+        $slot = 'Hola';
     @endphp
 
-{{--     <div class="p-4 pt-20 sm:ml-64 dark:bg-[#466EAB]">
-        {{ $slot }}
-    </div> --}}
     @livewireScripts
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+
 </body>
 
 </html>

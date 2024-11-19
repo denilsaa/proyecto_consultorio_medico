@@ -43,21 +43,37 @@ class Citas extends Component
     public $correo_paciente;
     #[Validate('required|numeric|digits:8')]
     public $telefono_paciente;
-    #[Validate('required|max:10|min:7|unique:usuarios')]
+    #[Validate('required|max:10|min:7')]
     public $carnet_paciente;
     #[Validate('required|date')]
     public $fecha_cita;
     #[Validate('required')]
-    public $doctor_id;
+    public $paciente_id;
 
     public function render()
     {
         $citas = $this->queryCitas();
-  //      dd($citas);
+        $pacientes = $this->searchPaciente();
+        //      dd($citas);
+        //     dd($this->searchPaciente());
         $this->resetPage();
         return view('livewire.vistas.citas', [
-            'citas' => $citas
+            'citas' => $citas,
+            'pacientes' => $pacientes
         ]);
+    }
+
+    public function searchPaciente()
+    {
+        if ($this->carnet_paciente == '') {
+            return null;
+        }
+        return Paciente::with('usuario')
+            ->whereHas('usuario', function ($query) {
+                $query->where(function ($query) {
+                    $query->Where('carnet', 'like', $this->carnet_paciente . '%');
+                })->where('estado_usuario', $this->estado);
+            })->get();
     }
 
     public function order($sort)
@@ -158,7 +174,6 @@ class Citas extends Component
         $this->telefono_paciente = $usuario->telefono;
         $this->carnet_paciente = $usuario->carnet;
         $this->fecha_cita = $cita->fecha;
-        $this->doctor_id = $cita->personal_id;
     }
 
     public function update()
@@ -236,5 +251,12 @@ class Citas extends Component
             'fecha_cita',
             'doctor_id'
         ]);
+    }
+
+    public function seleccionar($id, $nombre, $carnet)
+    {
+        $this->paciente_id = $id;
+        $this->nombre_paciente = $nombre;
+        $this->carnet_paciente = null;
     }
 }
