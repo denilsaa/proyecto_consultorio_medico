@@ -9,7 +9,7 @@ use Livewire\Attributes\Validate;
 
 class NewCita extends Component
 {
-    public $open = true;
+    public $open = false;
     public $horarios = ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'];
 
 
@@ -34,13 +34,24 @@ class NewCita extends Component
     public function save()
     {
         $user = Auth::user()->pacientes->first();
+        $this->fecha = \Carbon\Carbon::parse($this->fecha)->format('d/m/Y');
+       // dd($this->fecha, $this->hora, $this->motivo, $user->id);
 
         $cita = new Cita();
         $cita->paciente_id = $user->id;
-        $cita->fecha = date('d-m-y', strtotime($this->fecha));
-        $cita->hora = date('H:i:s', strtotime($this->hora));
+        $cita->fecha = $this->fecha;
+        $cita->hora = $this->hora;
         $cita->motivo = $this->motivo;
         $cita->save();
+        $this->dispatch('new_cita');
+        $this->resetInput();
+    }
+    private function resetInput()
+    {
+        $this->open = false;
+        $this->motivo = null;
+        $this->fecha = null;
+        $this->hora = null;
     }
 
     public function openModal()

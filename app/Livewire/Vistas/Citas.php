@@ -14,7 +14,7 @@ class Citas extends Component
 {
     use WithPagination;
 
-    public $open = true;
+    public $open = false;
     public $open_edit = false;
     public $search = '';
     public $sort = 'id';

@@ -12,8 +12,6 @@
         </x-componentes.tb-encabezado>
         <div>
 
-            @livewire('counter')
-
             <x-componentes.tb-thead :campos="$cabeceras" :sort="$sort" :direction="$direction" />
             @if ($open)
                 <div>
