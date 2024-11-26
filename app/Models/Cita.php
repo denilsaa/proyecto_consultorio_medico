@@ -51,7 +51,7 @@ class Cita extends Model
     {
         return Attribute::make(
             get: fn($value) => \Carbon\Carbon::parse($value)->format('H:i'),
-            set: fn($value) => \Carbon\Carbon::createFromFormat('H:i:s', $value)->format('H:i:s'),
+            set: fn($value) => \Carbon\Carbon::createFromFormat('H:i', $value)->format('H:i:s'),
         );
     }
 
