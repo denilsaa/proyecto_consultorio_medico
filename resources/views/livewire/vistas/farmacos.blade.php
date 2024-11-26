@@ -11,6 +11,18 @@
             </x-slot>
         </x-componentes.tb-encabezado>
 
+        {{-- BOTON DE GENERAR REPORTES DE MEDICAMENTOS --}}
+
+        <div class="p-4">
+            <a href="{{ route('medicamentos.reporte') }}" target="_blank">
+                <button class="px-4 py-2 font-semibold text-white bg-blue-500 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                    Generar Reporte
+                </button>
+            </a>
+        </div>
+        
+
+
         <x-componentes.tb-thead :campos="$cabeceras" :sort="$sort" :direction="$direction" />
         @if ($open)
         <div>

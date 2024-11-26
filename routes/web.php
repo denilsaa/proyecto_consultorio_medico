@@ -16,6 +16,8 @@ use App\Http\Middleware\CheckPersonal;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Framework\Constraint\Count;
+use App\Http\Controllers\MedicamentoReporteController;
+use App\Http\Controllers\CitasReporteController;
 
 Route::get('/', [HomeController::class, 'showWelcome'])->name('welcome');
 
@@ -64,6 +66,12 @@ Route::get('/send-test-email', function () {
 
     return 'Email sent!';
 });
+
+
+Route::get('/medicamentos/reporte', [MedicamentoReporteController::class, 'generarReporte'])->name('medicamentos.reporte');
+
+Route::get('/reporte/citas', [CitasReporteController::class, 'generarReporte'])->name('reporte.citas');
+
 
 use App\Livewire\Counter;
 
