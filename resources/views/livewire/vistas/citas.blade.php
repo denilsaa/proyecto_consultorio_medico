@@ -29,9 +29,34 @@
                     <x-componentes.no-data colspan="{{ count($cabeceras) + 1 }}" mensaje="No hay citas registrados." />
                 @else
                     @foreach ($citas as $cita)
-                        <x-componentes.tb-fila :fila="$cita" :datos="$cabeceras" :estado="$estado">
-
-                        </x-componentes.tb-fila>
+                        <tr
+                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <td scope="row"
+                                class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                <img class="w-10 h-10 rounded-full"
+                                    src="https://cdn-icons-png.flaticon.com/512/12266/12266251.png" alt="Usuario">
+                                <div class="ps-3">
+                                    <div class="text-base font-semibold">
+                                        {{ $cita->paciente }}
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $cita->carnet }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $cita->telefono }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $cita->fecha }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $cita->doctor }}
+                            </td>
+                            <td class="px-6 py-4">
+                                <x-componentes.estado-indicador :estado="$cita->confirmada" />
+                            </td>
+                        </tr>
                     @endforeach
                 @endif
 
