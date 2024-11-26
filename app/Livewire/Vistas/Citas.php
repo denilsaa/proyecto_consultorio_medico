@@ -104,8 +104,8 @@ class Citas extends Component
         )
             ->join('pacientes', 'pacientes.id', '=', 'citas.paciente_id')
             ->join('usuarios as usuarios_paciente', 'usuarios_paciente.id', '=', 'pacientes.usuario_id')
-            ->join('personals', 'personals.id', '=', 'citas.personal_id')
-            ->join('usuarios as usuarios_doctor', 'usuarios_doctor.id', '=', 'personals.usuario_id')
+            ->leftJoin('personals', 'personals.id', '=', 'citas.personal_id')
+            ->leftJoin('usuarios as usuarios_doctor', 'usuarios_doctor.id', '=', 'personals.usuario_id')
             ->where(function ($query) {
                 $query->where('usuarios_paciente.nombre', 'like', '%' . $this->search . '%')
                     ->orWhere('usuarios_paciente.ap_paterno', 'like', '%' . $this->search . '%')
