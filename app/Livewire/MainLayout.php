@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class MainLayout extends Component
 {
-    public $view = 'citas';
+    public $view = 'dashboard';
 
     protected $listeners = ['changeView'];
 

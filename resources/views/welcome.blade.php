@@ -305,6 +305,33 @@
             </ul>
         </div>
     </footer>
+        <script>
+        document.addEventListener('livewire:init', () => {
+            
+            Livewire.on('new_cita', (event) =>{
+                console.log(event);
+                Swal.fire({
+                title: "Cita Agendada Con Exito",
+                showClass: {
+                    popup: `
+                    animate__animated
+                    animate__fadeInUp
+                    animate__faster
+                    `
+                },
+                hideClass: {
+                    popup: `
+                    animate__animated
+                    animate__fadeOutDown
+                    animate__faster
+                    `
+                }
+                });
+            })
+        });
+
+    </script>
+</div>
 </body>
 
 </html>
