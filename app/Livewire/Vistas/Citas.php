@@ -33,29 +33,24 @@ class Citas extends Component
     ];
 
     /* Campos del formulario */
-    #[Validate('required|max:20|min:3|regex:/^[^\s].*$/')]
-    public $nombre_paciente;
-    #[Validate('required|max:20|min:3')]
-    public $ap_paterno_paciente;
-    #[Validate('required|max:20|min:3')]
-    public $ap_materno_paciente;
-    #[Validate('required|email|unique:usuarios')]
-    public $correo_paciente;
-    #[Validate('required|numeric|digits:8')]
-    public $telefono_paciente;
-    #[Validate('required|max:10|min:7')]
-    public $carnet_paciente;
     #[Validate('required|date')]
     public $fecha_cita;
     #[Validate('required')]
     public $paciente_id;
+    #[Validate('required')]
+    public $hora_cita;
+    #[Validate('required')]
+    public $motivo_cita;
+    public $doctor_id;
 
     public function render()
     {
         $citas = $this->queryCitas();
-        $pacientes = $this->searchPaciente();
-        //      dd($citas);
-        //     dd($this->searchPaciente());
+        $pacientes = Paciente::with('usuario')
+            ->whereHas('usuario', function ($query) {
+                $query->where('estado_usuario', $this->estado);
+            })->get();
+
         $this->resetPage();
         return view('livewire.vistas.citas', [
             'citas' => $citas,
@@ -132,25 +127,12 @@ class Citas extends Component
 
     private function newCita()
     {
-        $paciente = Usuario::create([
-            'nombre' => $this->nombre_paciente,
-            'ap_paterno' => $this->ap_paterno_paciente,
-            'ap_materno' => $this->ap_materno_paciente,
-            'correo' => $this->correo_paciente,
-            'telefono' => $this->telefono_paciente,
-            'carnet' => $this->carnet_paciente,
-            'password' => bcrypt(Str::random(8))
-        ]);
-
-        $paciente = Paciente::create([
-            'usuario_id' => $paciente->id
-        ]);
-
+        $this->fecha_cita = \Carbon\Carbon::parse($this->fecha_cita)->format('d/m/Y');
         Cita::create([
-            'paciente_id' => $paciente->id,
+            'paciente_id' => $this->paciente_id,
             'fecha' => $this->fecha_cita,
-            'personal_id' => $this->doctor_id,
-            'confirmada' => false
+            'hora' => $this->hora_cita,
+            'motivo' => $this->motivo_cita,
         ]);
     }
 
@@ -159,21 +141,6 @@ class Citas extends Component
         $this->cita_id = $id;
         $this->open_edit = true;
         $this->buscar();
-    }
-
-    private function buscar()
-    {
-        $cita = Cita::find($this->cita_id);
-        $paciente = Paciente::find($cita->paciente_id);
-        $usuario = Usuario::find($paciente->usuario_id);
-
-        $this->nombre_paciente = $usuario->nombre;
-        $this->ap_paterno_paciente = $usuario->ap_paterno;
-        $this->ap_materno_paciente = $usuario->ap_materno;
-        $this->correo_paciente = $usuario->correo;
-        $this->telefono_paciente = $usuario->telefono;
-        $this->carnet_paciente = $usuario->carnet;
-        $this->fecha_cita = $cita->fecha;
     }
 
     public function update()
@@ -190,15 +157,6 @@ class Citas extends Component
         $cita = Cita::find($this->cita_id);
         $paciente = Paciente::find($cita->paciente_id);
         $usuario = Usuario::find($paciente->usuario_id);
-
-        $usuario->update([
-            'nombre' => $this->nombre_paciente,
-            'ap_paterno' => $this->ap_paterno_paciente,
-            'ap_materno' => $this->ap_materno_paciente,
-            'correo' => $this->correo_paciente,
-            'telefono' => $this->telefono_paciente,
-            'carnet' => $this->carnet_paciente
-        ]);
 
         $cita->update([
             'fecha' => $this->fecha_cita,
@@ -242,21 +200,11 @@ class Citas extends Component
         $this->reset([
             'open',
             'open_edit',
-            'nombre_paciente',
-            'ap_paterno_paciente',
-            'ap_materno_paciente',
-            'correo_paciente',
-            'telefono_paciente',
-            'carnet_paciente',
             'fecha_cita',
+            'paciente_id',
+            'hora_cita',
+            'motivo_cita',
             'doctor_id'
         ]);
-    }
-
-    public function seleccionar($id, $nombre, $carnet)
-    {
-        $this->paciente_id = $id;
-        $this->nombre_paciente = $nombre;
-        $this->carnet_paciente = null;
     }
 }
